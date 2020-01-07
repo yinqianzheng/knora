@@ -2,16 +2,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show] do
-      resources :follows, only: [:create]
+      resources :follows, only: [:create, :destroy]
     end
-    resources :follows, only: [:destroy]
     resource :session, only: [:create, :destroy]
 
     resources :questions, only: [:create, :show, :destroy, :update]  do 
       resources :answers, only: [:create, :index]
-      resources :question_follows, only: [:create]
+      resources :question_follows, only: [:create, :destroy]
     end
-    resources :question_follows, only: [:destroy]
     resources :answers, only: [:show, :destroy, :update] do
       resources :comments, only: [:create, :index]
     end
@@ -20,9 +18,8 @@ Rails.application.routes.draw do
 
     resources :topics, only: [:index, :show, :create, :destroy] do 
       resources :questions, only: [:index]
-      resources :topic_follows, only: [:create]
+      resources :topic_follows, only: [:create, :destroy]
     end
-    resources :topic_follows, only: [:destroy]
   end
 
   # custom apis

@@ -1,6 +1,14 @@
-// import SignupContainer from "./session/signup_container";
-// import LoginContainer from "./user/login_container";
-// import { AuthRoute, ProtectedRoute } from "../utils/route_utils";
+import NavBarContainer from "./nav_bar/nav_bar";
+import FeedContainer from "./home/feed_container";
+import LoginPageContainer from "./session/login_page_container";
+import { AuthRoute, ProtectedRoute } from "../utils/route_utils";
+
 import React from "react";
 
-export default () => <div>home</div>;
+export default () => (
+  <div>
+    <ProtectedRoute path="/" component={NavBarContainer} />
+    <ProtectedRoute path="/" component={FeedContainer} />
+    <AuthRoute path="/login" component={LoginPageContainer} />
+  </div>
+);
