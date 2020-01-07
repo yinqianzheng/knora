@@ -27,15 +27,15 @@ Rails.application.routes.draw do
 
   # custom apis
   ## questions
-  get '/questions/:questions_id/getRelatedQuestions' to: 'questions#handle_get_related_questions'
-  get '/questions/:questions_id/getBestAnswer' to: 'questions#handle_get_best_answer'
-  get '/questions/:questions_id/getFollowers' to: 'questions#handle_get_followers'
+  get '/questions/:questions_id/getRelatedQuestions', to: 'questions#handle_get_related_questions'
+  get '/questions/:questions_id/getBestAnswer', to: 'questions#handle_get_best_answer'
+  get '/questions/:questions_id/getFollowers', to: 'questions#handle_get_followers'
 
   ## users
-  get '/users/:user_id/getFollowers' to: 'users#handle_get_followers'
+  get '/users/:user_id/getFollowers', to: 'users#handle_get_followers'
 
   ## topics
-  get '/topics/:topic_id/getFollowers' to: 'topics#handle_get_followers'
+  get '/topics/:topic_id/getFollowers', to: 'topics#handle_get_followers'
 
   root to: "static_pages#root"
 end
