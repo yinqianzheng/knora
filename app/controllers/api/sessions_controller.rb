@@ -18,6 +18,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def handle_google_login
+      puts "here"
       validator = GoogleIDToken::Validator.new
       begin
         payload = validator.check(params[:id_token], JWT.decode(params[:id_token], nil, false)[0]["aud"], "585994682438-s1gck3vli0j5dib2eh32pnk76pignjn7.apps.googleusercontent.com")
