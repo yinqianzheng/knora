@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./frontend/nora.jsx",
+  entry: "./frontend/knora.jsx",
   output: {
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "bundle.js"

@@ -4,7 +4,6 @@ export default class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       email: "",
       password: ""
     };
@@ -22,33 +21,34 @@ export default class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state).then(() => this.props.history.push("/chirps"));
+    this.props.login(this.state).then(() => this.props.history.push("/feed"));
   }
 
   render() {
     return (
-      <div className="session-form">
-        <h2>Log In</h2>
+      <div className="session_form">
         <form>
-          <label>
-            Username:
-            <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInput("username")}
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInput("password")}
-            />
-          </label>
-          <button onClick={e => this.handleSubmit(e)}>Log In</button>
+          <input
+            className="header_login_text_box"
+            type="text"
+            name="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleInput("email")}
+          />
+          <br />
+          <input
+            className="header_login_text_box"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleInput("password")}
+          />
+          <br />
+          <button className="login_btn" onClick={e => this.handleSubmit(e)}>
+            Log In
+          </button>
         </form>
       </div>
     );
