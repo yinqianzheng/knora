@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { googleLogin } from "../../utils/session";
 
 const GOOGLE_BUTTON_ID = "google-sign-in-button";

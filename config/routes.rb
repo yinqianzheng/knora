@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     # custom apis
     ## session
     get '/session/google_login', to: 'sessions#handle_google_login'
+    get '/session/demo_login', to: 'sessions#handle_demo_login'
 
     ## questions
     get '/questions/:questions_id/getRelatedQuestions', to: 'questions#handle_get_related_questions'

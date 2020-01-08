@@ -26,10 +26,10 @@ export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="session_form">
+      <div className="session-form">
         <form>
           <input
-            className="header_login_text_box"
+            className="header-login-text-box"
             type="text"
             name="email"
             placeholder="Email"
@@ -38,7 +38,7 @@ export default class LoginForm extends React.Component {
           />
           <br />
           <input
-            className="header_login_text_box"
+            className="header-login-text-box"
             type="password"
             name="password"
             placeholder="Password"
@@ -46,7 +46,7 @@ export default class LoginForm extends React.Component {
             onChange={this.handleInput("password")}
           />
           <br />
-          <button className="login_btn" onClick={e => this.handleSubmit(e)}>
+          <button className="login-btn" onClick={e => this.handleSubmit(e)}>
             Log In
           </button>
         </form>

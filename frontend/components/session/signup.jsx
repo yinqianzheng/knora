@@ -30,9 +30,9 @@ export default class Signup extends React.Component {
 
   render() {
     return (
-      <div className="signup_form">
+      <div className="signup-form">
         <form>
-          <div className="form_row half_left">
+          <div className="form-row half-left">
             <label>First Name</label>
             <input
               type="text"
@@ -42,7 +42,7 @@ export default class Signup extends React.Component {
             />
           </div>
 
-          <div className="form_row half_right">
+          <div className="form-row half-right">
             <label>Last Name</label>
             <input
               type="text"
@@ -52,7 +52,7 @@ export default class Signup extends React.Component {
             />
           </div>
           <br />
-          <div className="form_row">
+          <div className="form-row">
             <label>Email</label>
             <input
               type="email"
@@ -62,7 +62,7 @@ export default class Signup extends React.Component {
             />
           </div>
           <br />
-          <div className="form_row">
+          <div className="form-row">
             <label>Password</label>
             <input
               type="password"
@@ -72,7 +72,10 @@ export default class Signup extends React.Component {
             />
           </div>
           <br />
-          <button className="login_btn" onClick={e => this.handleSubmit(e)}>
+          <a href="#" signup-toggle onClick={this.props.showGoogleSigninBtn}>
+            cancel
+          </a>
+          <button className="login-btn" onClick={e => this.handleSubmit(e)}>
             Sign Up
           </button>
         </form>

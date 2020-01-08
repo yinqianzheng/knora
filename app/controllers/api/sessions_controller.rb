@@ -4,11 +4,17 @@ class Api::SessionsController < ApplicationController
     def create
       @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
       if @user.nil?
-        render json: ['Nope. Wrong credentials!'], status: 401
+        render json: ['Invalid email or password'], status: 401
       else
         login!(@user)
         render 'api/users/show';
       end
+    end
+
+    def handle_demo_login
+      @user = User.find_by(email:"yinqianzheng@gmail.com");
+      login!(@user)
+      render 'api/users/show'
     end
 
     def handle_google_login
@@ -17,7 +23,7 @@ class Api::SessionsController < ApplicationController
         payload = validator.check(params[:id_token], JWT.decode(params[:id_token], nil, false)[0]["aud"], "410414924194-p01fmqs2gn56sgg4af6alb20mu3hojs3.apps.googleusercontent.com")
         email = payload['email']
         @user = User.find_by(email:email)
-        if(@user)
+      if(@user)
           login!(@user)
           render 'api/users/show'
         else

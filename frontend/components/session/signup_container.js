@@ -2,8 +2,9 @@ import { connect } from "react-redux";
 import { createNewUser } from "../../actions/session";
 import Signup from "./signup";
 
-const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
+const mapStateToProps = (state, ownProps) => ({
+  currentUser: state.session.currentUser,
+  showGoogleSigninBtn: ownProps.showGoogleSigninBtn
 });
 
 const mapDispatchToProps = dispatch => ({
