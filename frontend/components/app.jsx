@@ -8,7 +8,7 @@ import React from "react";
 export default () => (
   <div>
     <ProtectedRoute path="/" component={NavBarContainer} />
-    <AuthRoute path="/login" component={LoginPageContainer} />
+    <AuthRoute path="/" component={LoginPageContainer} />
     <ProtectedRoute path="/feed" component={FeedContainer} />
   </div>
 );

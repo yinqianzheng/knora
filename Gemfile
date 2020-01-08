@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-rails'
 
+gem 'google-id-token'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

@@ -17,3 +17,10 @@ export const deleteSession = () =>
     url: "/api/session",
     method: "DELETE"
   });
+
+export const googleLogin = id_token =>
+  $.ajax({
+    url: "/api/session/google_login",
+    method: "GET",
+    data: { id_token }
+  });
