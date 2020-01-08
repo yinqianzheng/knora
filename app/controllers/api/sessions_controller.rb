@@ -37,7 +37,7 @@ class Api::SessionsController < ApplicationController
         end
       rescue GoogleIDToken::ValidationError => e
         report "Cannot validate: #{e}"
-        render :json => "#{e}"
+        # render :json => "#{e}"
       end
     end
     

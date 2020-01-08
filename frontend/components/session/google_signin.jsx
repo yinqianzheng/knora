@@ -18,7 +18,9 @@ export default class GoogleSignIn extends React.Component {
   }
 
   onSuccess(googleUser) {
+    console.log(1);
     googleLogin(googleUser.getAuthResponse().id_token).then(user => {
+      console.log(2);
       this.props.dispatchCurrentUser(user);
       const auth2 = gapi.auth2.getAuthInstance();
       if (auth2 != null) {
@@ -38,8 +40,8 @@ export default class GoogleSignIn extends React.Component {
       height: 50,
       longtitle: true,
       theme: "dark",
-      onsuccess: this.onSuccess
-      //   onfailure: onFailure
+      onsuccess: this.onSuccess,
+      onfailure: this.onFailure
     });
   }
 
