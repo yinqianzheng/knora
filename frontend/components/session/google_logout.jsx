@@ -6,6 +6,7 @@ export default class GoogleLogout extends React.Component {
     this.signOut = this.signOut.bind(this);
   }
 
+
   signOut() {
     const auth2 = gapi.auth2.getAuthInstance();
     if (auth2 != null) {

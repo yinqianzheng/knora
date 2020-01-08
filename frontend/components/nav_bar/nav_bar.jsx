@@ -6,11 +6,7 @@ export default class NavBar extends React.Component {
     return (
       <div>
         nav bar
-        {this.props.currentUser.signin_method === "GOOLE_SIGNIN" ? (
-          <GoogleLogout />
-        ) : (
-          <button onClick={this.props.logout}>logout</button>
-        )}
+        <button onClick={this.props.logout}>log out</button>
       </div>
     );
   }
