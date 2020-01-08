@@ -18,28 +18,18 @@ class Api::SessionsController < ApplicationController
     end
 
     def handle_google_login
-      puts "here"
       validator = GoogleIDToken::Validator.new
       begin
-        puts "1"
         payload = validator.check(params[:id_token], JWT.decode(params[:id_token], nil, false)[0]["aud"], "585994682438-s1gck3vli0j5dib2eh32pnk76pignjn7.apps.googleusercontent.com")
-        puts "2"
         email = payload['email']
         @user = User.find_by(email:email)
-        puts "3"
-        if(@user)
-          puts "4"
+      if(@user)
           login!(@user)
-          puts "5"
           render 'api/users/show'
         else
-          puts "6"
-          @user = new User(email: email, firstname: payload['given_name'], lastname:payload['family_name'], password:SecureRandom.urlsafe_base64)
-          puts "7"
+          @user = User.new(email: email, firstname: payload['given_name'], lastname:payload['family_name'], password:SecureRandom.urlsafe_base64)
           if @user.save
-            puts "8"
             login!(@user)
-            puts "9"
             render 'api/users/show'
           else
             render json: @user.errors.full_messages, status: 401
