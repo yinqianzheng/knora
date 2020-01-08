@@ -19,8 +19,10 @@ export default class GoogleSignIn extends React.Component {
 
   onSuccess(googleUser) {
     console.log(1);
+    window.user = googleUser;
+    console.log(googleUser.getAuthResponse().id_token);
     googleLogin(googleUser.getAuthResponse().id_token).then(user => {
-      console.log(2);
+      console.log(4);
       this.props.dispatchCurrentUser(user);
       const auth2 = gapi.auth2.getAuthInstance();
       if (auth2 != null) {
