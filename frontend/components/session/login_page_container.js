@@ -10,7 +10,10 @@ export default class LoginPage extends React.Component {
         <SessionErrors />
         <div className="login-page-background"></div>
         <div className="login-page-content">
-          <div className="quora-logo"></div>
+          <div className="main-logo">Knora</div>
+          <h2 className="tagline">
+            A place to share knowledge and better understand the world
+          </h2>
           <div className="login-page-content-inner">
             <div className="signup-login">
               <SignupContentContainer history={this.props.history} />

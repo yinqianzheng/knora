@@ -51,7 +51,7 @@ export default class Signup extends React.Component {
               onChange={this.handleInput("lastname")}
             />
           </div>
-          <br />
+
           <div className="form-row">
             <label>Email</label>
             <input
@@ -61,7 +61,7 @@ export default class Signup extends React.Component {
               onChange={this.handleInput("email")}
             />
           </div>
-          <br />
+
           <div className="form-row">
             <label>Password</label>
             <input
@@ -71,13 +71,21 @@ export default class Signup extends React.Component {
               onChange={this.handleInput("password")}
             />
           </div>
-          <br />
-          <a href="#" signup-toggle onClick={this.props.showGoogleSigninBtn}>
-            cancel
-          </a>
-          <button className="login-btn" onClick={e => this.handleSubmit(e)}>
-            Sign Up
-          </button>
+          <div className="signup-policy padding-top">
+            By clicking "Sign Up" you indicate that you have read and agree to
+            Quora's Terms of Service and Privacy Policy.
+          </div>
+          <div className="signup-btn-box">
+            <button
+              className="login-btn signup-btn"
+              onClick={e => this.handleSubmit(e)}
+            >
+              Sign Up
+            </button>
+            <a href="#" onClick={this.props.showGoogleSigninBtn}>
+              cancel
+            </a>
+          </div>
         </form>
       </div>
     );

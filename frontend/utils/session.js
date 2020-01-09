@@ -24,3 +24,9 @@ export const googleLogin = id_token =>
     method: "GET",
     data: { id_token }
   });
+
+export const postDemoSession = () =>
+  $.ajax({
+    url: "/api/session/demo_login",
+    method: "GET"
+  });

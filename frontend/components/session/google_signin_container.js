@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import { receiveCurrentUser } from "../../actions/session";
+import { loginWithGoogle } from "../../actions/session";
 import GoogleLogin from "./google_signin";
 
 const mapDispatchToProps = dispatch => ({
-  dispatchCurrentUser: user => dispatch(receiveCurrentUser(user))
+  loginWithGoogle: idToken => dispatch(loginWithGoogle(idToken))
 });
 
 export default connect(null, mapDispatchToProps)(GoogleLogin);

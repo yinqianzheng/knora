@@ -1,5 +1,4 @@
 import React from "react";
-import { googleLogin } from "../../utils/session";
 
 const GOOGLE_BUTTON_ID = "google-sign-in-button";
 
@@ -18,13 +17,7 @@ export default class GoogleSignIn extends React.Component {
   }
 
   onSuccess(googleUser) {
-    googleLogin(googleUser.getAuthResponse().id_token).then(user => {
-      this.props.dispatchCurrentUser(user);
-      const auth2 = gapi.auth2.getAuthInstance();
-      if (auth2 != null) {
-        auth2.signOut().then(auth2.disconnect());
-      }
-    });
+    this.props.loginWithGoogle(googleUser.getAuthResponse().id_token);
   }
 
   onFailure(error) {

@@ -28,6 +28,7 @@
   top: 100px;
   margin: auto;
   overflow-y: hidden;
+  text-align: center;
   // transform: translateY(30%);
 }
 
@@ -35,6 +36,7 @@
   display: flex;
   margin: 35px;
   position: relative;
+  text-align: left;
 }
 
 .signup-form {
@@ -68,6 +70,25 @@
   cursor: pointer;
 }
 
+.main-logo {
+  font-family: "Libre Baskerville", serif;
+  color: #b92b26;
+  font-weight: 700;
+  font-size: 70px;
+  margin: auto;
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  src: local("Libre Baskerville Bold"), local("LibreBaskerville-Bold"),
+    url(https://fonts.gstatic.com/s/librebaskerville/v7/kmKiZrc3Hgbbcjq75U4uslyuy4kn0qviTgY3KcC-wLOj.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
 .login-page-content .quora-logo {
   width: 400px;
   height: 60px;
@@ -92,7 +113,6 @@
   transition: opacity ease-in-out 100ms, color ease-in-out 100ms,
     background-color ease-in-out 100ms, border-color ease-in-out 100ms;
   border-radius: 3px;
-  display: inline-block;
   font-weight: 500;
   outline: 0;
   padding: 3px 7px 4px 7px;
@@ -105,6 +125,16 @@
   font: inherit;
   margin: 0;
   cursor: pointer;
+  float: right;
+}
+
+.signup-btn {
+  padding: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 13px;
+  right: 0;
+  float: right;
 }
 
 .form-row.half-left {
@@ -141,7 +171,6 @@
   transition: border-color 0.2s;
   color: #333;
   font: inherit;
-  cursor: pointer;
 }
 
 .form-row input {
@@ -187,6 +216,86 @@ input[type="password"] {
 }
 
 #google-sign-in-button {
-  padding-top: 25px;
   cursor: pointer;
+}
+
+.demo-login {
+  position: relative;
+  margin: 15px 0 15px 0;
+  color: #fff;
+  background-color: #df4930;
+  border: none;
+  width: 240px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  transition: background-color 0.218s, border-color 0.218s, box-shadow 0.218s;
+  text-align: center;
+  white-space: nowrap;
+  padding: 15px 0 15px 0;
+  box-shadow: 0 0 5px #888;
+  height: 50;
+  cursor: pointer;
+}
+
+.logo-k {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  text-align: center;
+  width: 48px;
+  height: 46px;
+  background-color: white;
+  font-family: "Libre Baskerville", serif;
+  color: #b92b26;
+  font-size: 25px;
+}
+
+.logo-k > div {
+  padding-top: 10px;
+}
+.signup-term {
+  padding-top: 20px;
+  font-size: 14px;
+}
+
+.signup-with-google {
+  text-decoration: none;
+  color: #2b6dad;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.signup-term > div {
+  display: inline;
+}
+
+.signup-policy {
+  color: #949494;
+  text-transform: none;
+  line-height: normal;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.signup-btn-box {
+  padding-top: 15px;
+  overflow: auto;
+}
+.signup-btn-box > a {
+  text-decoration: none;
+  padding-right: 5px;
+  float: right;
+}
+
+.padding-top {
+  padding-top: 10px;
+}
+
+.tagline {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin: 8px 0 32px;
+  color: #949494;
+  font-size: 19px;
+  font-weight: 400;
 }
