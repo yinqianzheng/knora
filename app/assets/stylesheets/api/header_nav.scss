@@ -1,0 +1,110 @@
+.header-nav-bar {
+  border-top: 0;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 50px;
+  box-sizing: border-box;
+  z-index: 800;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 3px 2px -2px rgba(200, 200, 200, 0.2);
+}
+
+.head-nav-content {
+  display: flex;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.quora-logo-nav {
+  background-image: url(/assets/quora.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  display: block;
+  width: 80px;
+  min-width: 80px;
+  height: 50px;
+  background-position: center;
+  margin-left: 10px;
+}
+
+.head-nav {
+  width: 464px;
+  display: flex;
+  color: black;
+  padding-left: 15px;
+}
+
+.haed-nav-item {
+  width: 96px;
+  float: left;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.haed-item {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  line-height: 50px;
+  white-space: nowrap;
+  text-align: center;
+  align-self: auto;
+  top: -12px;
+}
+
+.head-nav-right {
+  position: absolute;
+  display: flex;
+  overflow: auto;
+  width: 450px;
+  right: 1%;
+  top: 10px;
+}
+
+.logout-btn {
+  //   position: absolute;
+  float: right;
+  height: 20px;
+}
+
+.add-question-btn {
+  float: right;
+  height: 28px;
+  font-size: 14px;
+  color: #fff;
+  margin-left: 8px;
+  min-width: 96px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: opacity ease-in-out 100ms, color ease-in-out 100ms,
+    background-color ease-in-out 100ms, border-color ease-in-out 100ms;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.2);
+  font-weight: 500;
+  outline: 0;
+  padding: 3px 7px 4px 7px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #b92b27;
+  background: #b92b27;
+}
+
+.haed-nav-icon {
+  position: absolute;
+  top: 12px;
+  left: 13px;
+}
+
+.haed-nav-item:hover {
+  background-color: #fafafa;
+}

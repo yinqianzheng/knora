@@ -1,7 +1,7 @@
 import React from "react";
 
-export default props => {
-  return <div className="session-errors">{props.errors}</div>;
-};
-
-
+export default class ErrorBox extends React.Component {
+  render() {
+    return <div className={`session-errors`}>{this.props.errors}</div>;
+  }
+}

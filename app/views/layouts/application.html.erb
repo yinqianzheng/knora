@@ -2,14 +2,14 @@
 <html>
   <head>
     <title>Knora</title>
-    <meta name="google-signin-client_id" content="585994682438-s1gck3vli0j5dib2eh32pnk76pignjn7.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="410414924194-p01fmqs2gn56sgg4af6alb20mu3hojs3.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <%# <script src="https://apis.google.com/js/api:client.js?onload=start" async defer></script>
     <script>
       function start() {
         gapi.load('auth2', function() {
           auth2 = gapi.auth2.init({
-              client_id: '585994682438-s1gck3vli0j5dib2eh32pnk76pignjn7.apps.googleusercontent.com',
+              client_id: '410414924194-p01fmqs2gn56sgg4af6alb20mu3hojs3.apps.googleusercontent.com',
               cookiepolicy: 'single_host_origin'
           });
         });
@@ -25,8 +25,7 @@
         id: "<%= current_user.id %>",
         firstname: "<%= current_user.firstname %>",
         lastname: "<%= current_user.lastname %>",
-        email: "<%= current_user.email %>",
-        signin_method: "<%= session[:signin_method] %>"
+        email: "<%= current_user.email %>"
       }
     </script>
     <% end %>
