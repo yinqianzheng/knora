@@ -14,15 +14,15 @@
 }
 
 .head-nav-content {
+  position: relative;
   display: flex;
   width: 1000px;
   margin: 0 auto;
 }
 
-.quora-logo-nav {
-  background-image: url(/assets/quora.png);
-  background-repeat: no-repeat;
-  background-size: contain;
+.nav-logo {
+  font-family: "Libre Baskerville", serif;
+  color: #b92b26;
   cursor: pointer;
   display: block;
   width: 80px;
@@ -30,12 +30,14 @@
   height: 50px;
   background-position: center;
   margin-left: 10px;
+  text-decoration: none;
+  font-size: 25px;
+  line-height: 50px;
 }
 
 .head-nav {
   width: 464px;
   display: flex;
-  color: black;
   padding-left: 15px;
 }
 
@@ -46,13 +48,16 @@
   position: relative;
   justify-content: center;
   cursor: pointer;
+  color: #666;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .haed-item {
   position: absolute;
   font-size: 14px;
   font-weight: 500;
-  color: #666;
+  color: inherit;
   line-height: 50px;
   white-space: nowrap;
   text-align: center;
@@ -62,21 +67,17 @@
 
 .head-nav-right {
   position: absolute;
-  display: flex;
   overflow: auto;
   width: 450px;
   right: 1%;
-  top: 10px;
 }
 
 .logout-btn {
-  //   position: absolute;
   float: right;
   height: 20px;
 }
 
 .add-question-btn {
-  float: right;
   height: 28px;
   font-size: 14px;
   color: #fff;
@@ -96,6 +97,7 @@
   cursor: pointer;
   border: 1px solid #b92b27;
   background: #b92b27;
+  float: right;
 }
 
 .haed-nav-icon {
@@ -106,4 +108,16 @@
 
 .haed-nav-item:hover {
   background-color: #fafafa;
+}
+
+.selected {
+  color: #b92b27;
+  opacity: 1;
+  border-bottom: #b92b27 2px solid;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.selected > div > div > svg > g {
+  fill: #b92b27;
 }

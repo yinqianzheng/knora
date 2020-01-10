@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
-import Feed from "./feed";
+import AnswerLeftBar from "./leftbar";
 
 const mapStateToProps = state => ({});
+
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerLeftBar);
