@@ -1,0 +1,22 @@
+.grid_page {
+  display: inline-block;
+  margin-top: 80px;
+  width: 1000px;
+  padding: 0 8px 0 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 1.4;
+  display: table;
+}
+
+.layout_3col_left {
+  float: left;
+  width: 142px;
+  margin: 0 50px 0 15px;
+}
+.layout_3col_center {
+  float: left;
+  width: 614px;
+}
+
+

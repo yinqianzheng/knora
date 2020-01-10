@@ -1,0 +1,32 @@
+.question-left-bar {
+  position: relative;
+}
+.question-left-bar > h2 {
+  border-bottom: 1px solid rgb(226, 226, 226);
+  padding-bottom: 4px;
+}
+.leftbar-items a {
+  padding: 4px;
+  color: rgb(102, 102, 102);
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.leftbar-items > div {
+  margin: 8px 0 8px 0;
+}
+
+.leftbar-items > div {
+  transform: translateX(-4px);
+}
+
+.leftbar-items a:hover {
+  color: #2b6dad;
+}
+
+.leftBarSelected {
+  background-color: #e7e7e7;
+}

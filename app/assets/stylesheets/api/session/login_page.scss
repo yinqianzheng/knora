@@ -5,9 +5,6 @@
   z-index: -1;
   height: 100%;
   width: 100%;
-  background-image: url(/assets/welcome.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .login-page-container {
@@ -233,7 +230,7 @@ input[type="password"] {
   white-space: nowrap;
   padding: 15px 0 15px 0;
   box-shadow: 0 0 5px #888;
-  height: 50;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -243,7 +240,7 @@ input[type="password"] {
   left: 1px;
   text-align: center;
   width: 48px;
-  height: 46px;
+  height: 48px;
   background-color: white;
   font-family: "Libre Baskerville", serif;
   color: #b92b26;

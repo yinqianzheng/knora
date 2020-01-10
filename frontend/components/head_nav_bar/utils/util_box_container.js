@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import UtilBox from "./util_box";
 
-import { logout } from "../../actions/session";
+import { logout } from "../../../actions/session";
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser

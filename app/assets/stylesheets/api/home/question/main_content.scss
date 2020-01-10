@@ -1,0 +1,29 @@
+.qustions-box-title {
+  box-sizing: border-box;
+  width: 600px;
+  color: rgb(51, 51, 51);
+  background-color: white;
+  padding: 16px 16px 0 16px;
+  display: inline-block;
+  position: relative;
+  border-bottom: 1px solid #e2e2e2;
+  box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.2);
+  border-radius: 3px;
+  padding-bottom: 15px;
+  font-weight: 500;
+  display: flex;
+  position: relative;
+}
+
+.start-icon {
+  position: absolute;
+  background-color: #b92b27;
+  width: 24px;
+  border-radius: 5px;
+  margin-right: 10px;
+  top: 13px;
+}
+
+.qustions-box-title > h2 {
+  padding-left: 35px;
+}
