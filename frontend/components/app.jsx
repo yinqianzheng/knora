@@ -5,13 +5,17 @@ import LoginPageContainer from "./session/login_page_container";
 import { AuthRoute, ProtectedRoute } from "../utils/route_utils";
 
 import React from "react";
+import { Switch, Redirect } from "react-router-dom";
 
 export default () => (
   <div>
     <ProtectedRoute path="/" component={NavBarContainer} />
-    <AuthRoute path="/" component={LoginPageContainer} />
-    <ProtectedRoute path="/feed" component={FeedContainer} />
-    <ProtectedRoute path="/answer" component={NewQestions} />
-    <ProtectedRoute path="/answer_later" component={NewQestions} />
+    <Switch>
+      <ProtectedRoute exact path="/feed" component={FeedContainer} />
+      <ProtectedRoute exact path="/answer" component={NewQestions} />
+      <ProtectedRoute exact path="/answer_later" component={NewQestions} />
+      <AuthRoute exact path="/" component={LoginPageContainer} />
+      <Redirect to="/feed" />
+    </Switch>
   </div>
 );

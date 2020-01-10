@@ -5,6 +5,8 @@
   z-index: -2;
   height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
   background-image: url(/assets/welcome.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -207,6 +209,10 @@ input[type="password"] {
   width: 100%;
   background-color: gray;
   text-align: center;
+}
+
+.session-errors > p {
+  padding: 4px;
 }
 
 .fade-out {

@@ -6,8 +6,6 @@ const mapStateToProps = state => ({
   errors: state.errors.session
 });
 
-const mapDispatchToProps = dispatch => ({
-  clearErrors: () => dispatch(receiveErrors([]))
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionErrors);

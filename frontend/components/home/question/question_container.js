@@ -18,12 +18,12 @@ const getAnswers = id => {
 };
 
 const followQuestion = id => {
-  alert(`follow question:${id}`);
+  alert(`follow question:${id} \n Will send a follow request to server`);
   return action;
 };
 
 const unfollowQuestion = id => {
-  alert(`unfollow question:${id}`);
+  alert(`unfollow question:${id} \n Will send a unfollow request to server`);
   return action;
 };
 

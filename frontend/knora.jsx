@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
   }
+
   const store = createConfigStore(preloadedState);
 
   ReactDOM.render(<Root store={store} />, root);

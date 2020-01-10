@@ -36,7 +36,7 @@ export default class Question extends React.Component {
 
   loadTextEditor() {
     this.disableBtn();
-    alert("load text editor");
+    alert("Will load text editor and disable the button");
   }
 
   render() {

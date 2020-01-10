@@ -20,7 +20,11 @@ class Api::SessionsController < ApplicationController
     def handle_google_login
       validator = GoogleIDToken::Validator.new
       begin
-        payload = validator.check(params[:id_token], JWT.decode(params[:id_token], nil, false)[0]["aud"], "410414924194-p01fmqs2gn56sgg4af6alb20mu3hojs3.apps.googleusercontent.com")
+        client_id = "585994682438-s1gck3vli0j5dib2eh32pnk76pignjn7.apps.googleusercontent.com"
+        if (process.env.NODE_ENV != "production")
+          client_id = "410414924194-p01fmqs2gn56sgg4af6alb20mu3hojs3.apps.googleusercontent.com"
+        end
+        payload = validator.check(params[:id_token], JWT.decode(params[:id_token], nil, false)[0]["aud"], client_id)
         email = payload['email']
         @user = User.find_by(email:email)
       if(@user)
