@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBundle from "./search_bundle";
-import UserIconContainer from "./user_icon_container";
+import UserIconContainer from "../../home/user/user_icon_container";
 
 export default class UtilsBox extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class UtilsBox extends React.Component {
         >
           Add Question
         </button>
-        <UserIconContainer />
+        <UserIconContainer user={this.props.currentUser} />
         {/* <button className="logout-btn" onClick={this.props.logout}>
           log out
         </button> */}

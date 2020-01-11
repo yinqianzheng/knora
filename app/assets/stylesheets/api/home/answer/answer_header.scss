@@ -1,0 +1,22 @@
+.answer-bundle {
+  position: relative;
+  margin-top: 10px;
+}
+
+.AnswerHeader {
+  display: flex;
+  position: relative;
+}
+
+.NameCredential > a {
+  cursor: pointer;
+}
+
+.NameCredential > a:hover {
+  text-decoration: underline;
+}
+
+.AnswerCredibilityFacts {
+  font-size: 13px;
+  color: #949494;
+}

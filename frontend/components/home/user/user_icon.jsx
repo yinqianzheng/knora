@@ -7,8 +7,8 @@ export default class UserIcon extends React.Component {
   }
 
   getInit() {
-    return this.props.currentUser.firstname.length > 0
-      ? this.props.currentUser.firstname[0].toUpperCase()
+    return this.props.user.firstname.length > 0
+      ? this.props.user.firstname[0].toUpperCase()
       : " ";
   }
 

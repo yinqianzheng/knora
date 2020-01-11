@@ -2,9 +2,7 @@ import { connect } from "react-redux";
 import UserIcon from "./user_icon";
 import { logout } from "../../../actions/session";
 
-const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   logout: () => {

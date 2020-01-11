@@ -1,0 +1,22 @@
+.answer-body {
+  position: relative;
+  padding-top: 10px;
+}
+
+.answer-info {
+  margin: 10px 0 10px 0;
+}
+
+.upvote {
+  margin: 5px 0 10px 0;
+  cursor: pointer;
+  min-width: 140px;
+  max-width: 200px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.upvote svg {
+  transform: translateY(6px);
+  padding-right: 10px;
+}
