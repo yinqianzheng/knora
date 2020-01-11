@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import HeadNavItemsContainer from "./items/head_items_container";
 import UtilsBoxContainer from "./utils/util_box_container";
-
 export default class HeaderNavBar extends React.Component {
   render() {
     return (

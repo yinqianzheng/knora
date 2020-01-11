@@ -11,6 +11,7 @@ export default class NewQestions extends React.Component {
     if (this.props.match.path === "/answer") {
       return (
         <div>
+          
           <div className="qustions-box-title">
             <div className="start-icon">
               <svg

@@ -1,5 +1,6 @@
 import React from "react";
 import UserIcon from "../user/user_icon";
+import QuestionForm from "../question/question_form";
 
 export default class FeedHead extends React.Component {
   render() {
@@ -10,7 +11,7 @@ export default class FeedHead extends React.Component {
           <UserIcon user={user} action={"a"} />
           <div>{`${user.firstname} ${user.lastname}`}</div>
         </div>
-        <a className="AskQuestionButton">What is your question?</a>
+        <QuestionForm type="FEED" />
       </div>
     );
   }
