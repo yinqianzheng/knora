@@ -6,15 +6,17 @@ import Root from "./components/root";
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   let preloadedState = undefined;
-  if (window.currentUser) {
-    preloadedState = {
-      session: {
-        currentUser: window.currentUser
-      }
-    };
+  if (window.localStorage.getItem("preLoadedState")) {
+    preloadedState = JSON.parse(window.localStorage.getItem("preLoadedState"));
   }
-
   const store = createConfigStore(preloadedState);
+  window.onbeforeunload = function(event) {
+    window.localStorage.setItem(
+      "preLoadedState",
+      JSON.stringify(store.getState())
+    );
+  };
 
+  window.store = store;
   ReactDOM.render(<Root store={store} />, root);
 });

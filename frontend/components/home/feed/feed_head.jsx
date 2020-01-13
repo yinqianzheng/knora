@@ -1,6 +1,6 @@
 import React from "react";
 import UserIcon from "../user/user_icon";
-import QuestionForm from "../question/question_form";
+import { CreateQuestionForm } from "../question/question_form_comtainer";
 
 export default class FeedHead extends React.Component {
   render() {
@@ -11,7 +11,7 @@ export default class FeedHead extends React.Component {
           <UserIcon user={user} action={"a"} />
           <div>{`${user.firstname} ${user.lastname}`}</div>
         </div>
-        <QuestionForm type="FEED" />
+        <CreateQuestionForm type="FEED" />
       </div>
     );
   }

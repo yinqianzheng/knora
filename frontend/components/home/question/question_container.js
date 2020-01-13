@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Question from "./question";
+import { deleteQuestion, editQuestion } from "../../../actions/question";
 
 const action = { type: "TEST", test: {} };
 
@@ -27,13 +28,16 @@ const unfollowQuestion = id => {
   return action;
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  currentUser: state.session.currentUser
+});
 
 const mapDispatchToProps = dispatch => ({
   selectQuestion: id => dispatch(getQuestion(id)),
   getAnswers: id => dispatch(getAnswers(id)),
   follow: id => dispatch(followQuestion(id)),
-  unfollow: id => dispatch(unfollowQuestion(id))
+  unfollow: id => dispatch(unfollowQuestion(id)),
+  deleteQuestion: id => dispatch(deleteQuestion(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);

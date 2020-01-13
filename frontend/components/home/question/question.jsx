@@ -1,4 +1,6 @@
 import React from "react";
+import { EditQuestionForm } from "../question/question_form_comtainer";
+import { receiveCurrentUser } from "../../../actions/session";
 
 export default class Question extends React.Component {
   constructor(props) {
@@ -14,17 +16,18 @@ export default class Question extends React.Component {
     this.getFooter = this.getFooter.bind(this);
     this.getQuestionInfo = this.getQuestionInfo.bind(this);
     this.getTopicCard = this.getTopicCard.bind(this);
+    this.getMoreDropDown = this.getMoreDropDown.bind(this);
   }
 
   handleFollow() {
     this.setState(prev => {
       if (prev.follow === "unfollowed") {
         this.props.follow(this.props.question.id);
-        this.props.question.numOfFollows++;
+        this.props.question.numOfFollowers++;
         return { follow: "followed" };
       } else {
         this.props.unfollow(this.props.question.id);
-        this.props.question.numOfFollows--;
+        this.props.question.numOfFollowers--;
         return { follow: "unfollowed" };
       }
     });
@@ -42,7 +45,10 @@ export default class Question extends React.Component {
       return null;
     return (
       <div className="question-card-footer">
-        <div onClick={this.loadTextEditor} className={this.state.disableClass}>
+        <div
+          onClick={this.loadTextEditor}
+          className={`question-footer-left ${this.state.disableClass}`}
+        >
           <svg
             width="17px"
             height="17px"
@@ -62,7 +68,10 @@ export default class Question extends React.Component {
           <span>Answer</span>
         </div>
 
-        <div onClick={this.handleFollow} className={this.state.follow}>
+        <div
+          onClick={this.handleFollow}
+          className={`question-footer-left ${this.state.follow}`}
+        >
           <svg
             width="20px"
             height="20px"
@@ -78,12 +87,28 @@ export default class Question extends React.Component {
               <circle cx="7.5" cy="17" r="2" fill="none" stroke="#666"></circle>
             </g>
           </svg>
-          <span>{`Follow · ${this.props.question.numOfFollows}`}</span>
+          <span>{`Follow · ${this.props.question.numOfFollowers}`}</span>
         </div>
+        <div className="question-footer-more">{this.getMoreDropDown()}</div>
       </div>
     );
   }
 
+  getMoreDropDown() {
+    if (this.props.currentUser.id === this.props.question.authorId) {
+      return (
+        <div className="question-footer-more">
+          <EditQuestionForm type="EDIT" question={this.props.question} />
+          <button
+            onClick={() => this.props.deleteQuestion(this.props.question.id)}
+          >
+            delete
+          </button>
+        </div>
+      );
+    }
+    return null;
+  }
   loadTextEditor() {
     this.disableBtn();
     alert("Will load text editor and disable the button");

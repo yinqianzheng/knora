@@ -1,6 +1,6 @@
 import NavBarContainer from "./head_nav_bar/main_nav_bar_container";
 import FeedContainer from "./home/feed/main_feed_container";
-import NewQestions from "./home/question/main_feed_content_container";
+import NewQestions from "./home/question/new_questions_container";
 import LoginPageContainer from "./session/login_page_container";
 import { AuthRoute, ProtectedRoute } from "../utils/route_utils";
 

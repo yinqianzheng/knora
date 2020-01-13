@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 export default class HeadItems extends React.Component {
   render() {
-    console.log();
     const seletedClass =
       this.props.location.pathname === "/answer_later" ? "selected" : "";
     return (
@@ -26,6 +25,7 @@ export default class HeadItems extends React.Component {
         <NavLink
           className={seletedClass}
           to="answer"
+          onClick={this.props.reloadNewQustions}
           activeStyle={{ outline: "none" }}
           activeClassName="selected"
         >

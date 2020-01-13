@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBundle from "./search_bundle";
 import UserIconContainer from "../../home/user/user_icon_container";
-import QuestionForm from "../../home/question/question_form";
+import { CreateQuestionForm } from "../../home/question/question_form_comtainer";
 
 export default class UtilsBox extends React.Component {
   constructor(props) {
@@ -19,17 +19,8 @@ export default class UtilsBox extends React.Component {
     return (
       <div className="head-nav-right">
         <SearchBundle />
-        {/* <button
-          onClick={this.showCreateQuestionModal}
-          className="add-question-btn"
-        >
-          Add Question
-        </button> */}
-        <QuestionForm type="NAV" />
+        <CreateQuestionForm type="NAV" />
         <UserIconContainer user={this.props.currentUser} />
-        {/* <button className="logout-btn" onClick={this.props.logout}>
-          log out
-        </button> */}
       </div>
     );
   }

@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_200138) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_questions_on_author_id", unique: true
+    t.index ["title", "author_id"], name: "index_questions_on_title_and_author_id", unique: true
   end
 
   create_table "subscribers", force: :cascade do |t|

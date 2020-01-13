@@ -7,16 +7,11 @@ import AnswerBundle from "../answer/anser_bundle";
 export default class QuestionBundle extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      render: true
-    };
     this.closeWindow = this.closeWindow.bind(this);
     this.renderAnswerBundle = this.renderAnswerBundle.bind(this);
   }
   closeWindow() {
-    this.setState({
-      render: false
-    });
+    this.props.removeQuestion(this.props.question.id);
   }
 
   renderAnswerBundle() {
@@ -30,7 +25,6 @@ export default class QuestionBundle extends React.Component {
   }
 
   render() {
-    if (!this.state.render) return null;
     return (
       <div>
         <div className="QuestionArea">

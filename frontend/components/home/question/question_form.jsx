@@ -5,22 +5,30 @@ export default class QuestionForm extends React.Component {
     super(props);
     this.state = {
       display: "hidden",
-      question: ""
+      title: ""
     };
     this.hideModal = this.hideModal.bind(this);
     this.showModal = this.showModal.bind(this);
     this.renderComponent = this.renderComponent.bind(this);
     this.preventClickThrough = this.preventClickThrough.bind(this);
+    this.updateQustion = this.updateQustion.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   hideModal() {
     this.setState({
-      display: "hidden"
+      display: "hidden",
+      title: ""
     });
   }
 
   showModal() {
+    let title = "";
+    if (this.props.question) {
+      title = this.props.question.title;
+    }
     this.setState({
+      title: title,
       display: ""
     });
   }
@@ -30,6 +38,12 @@ export default class QuestionForm extends React.Component {
       return (
         <button onClick={this.showModal} className="add-question-btn">
           Add Question
+        </button>
+      );
+    } else if (this.props.type === "EDIT") {
+      return (
+        <button onClick={this.showModal} className="edit-question-btn">
+          EDIT
         </button>
       );
     } else {
@@ -43,6 +57,22 @@ export default class QuestionForm extends React.Component {
 
   preventClickThrough(e) {
     e.stopPropagation();
+  }
+
+  updateQustion(e) {
+    this.setState({
+      title: e.currentTarget.value
+    });
+  }
+
+  submit() {
+    const question = {};
+    if (this.props.question) {
+      question.id = this.props.question.id;
+    }
+    question.author_id = this.props.currentUser.id;
+    question.title = this.state.title;
+    this.props.action(question, this.hideModal);
   }
 
   render() {
@@ -59,13 +89,16 @@ export default class QuestionForm extends React.Component {
               className="question-form-container"
             >
               <div>
-                <form className="question-form">
-                  <input
-                    type="text"
-                    name="question"
-                    value={this.state.question}
-                  />
-                </form>
+                <input
+                  className="question-form-input"
+                  onChange={e => this.updateQustion(e)}
+                  type="text"
+                  name="title"
+                  value={this.state.title}
+                />
+                <div className="question-form-footer">
+                  <button onClick={this.submit}>{this.props.formType}</button>
+                </div>
               </div>
             </div>
           </div>

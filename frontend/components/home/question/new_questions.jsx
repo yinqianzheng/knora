@@ -6,12 +6,31 @@ export default class NewQestions extends React.Component {
   constructor(props) {
     super(props);
     this.getContentElement = this.getContentElement.bind(this);
+    this.loadMore = this.loadMore.bind(this);
   }
+
+  loadMore() {
+    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+      const range = [0];
+      this.props.questions.forEach(question => {
+        range.push(question.id);
+      });
+      this.props.loadMoreQustions(range);
+    }
+  }
+
+  componentDidMount() {
+    $(window).scroll(this.loadMore);
+  }
+
+  componentWillUnmount() {
+    $(window).off("scroll");
+  }
+
   getContentElement() {
     if (this.props.match.path === "/answer") {
       return (
         <div>
-          
           <div className="qustions-box-title">
             <div className="start-icon">
               <svg

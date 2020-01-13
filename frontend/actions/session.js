@@ -21,7 +21,7 @@ const loggoutCurrentUser = () => ({
 
 export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
-  errors
+  errors: errors ? errors : []
 });
 
 export const createNewUser = formUser => dispatch =>
@@ -67,7 +67,10 @@ export const demoLogin = () => dispatch =>
   );
 
 export const logout = () => dispatch =>
-  deleteSession().then(() => dispatch(loggoutCurrentUser()));
+  deleteSession().then(() => {
+    dispatch(loggoutCurrentUser());
+    window.localStorage.clear();
+  });
 
 export const loginWithGoogle = idToken => dispatch =>
   googleLogin(idToken).then(

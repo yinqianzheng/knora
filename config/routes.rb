@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get '/session/demo_login', to: 'sessions#handle_demo_login'
 
     ## questions
+    get '/most_recent_questions', to: 'questions#handle_get_new_questions'
     get '/questions/:questions_id/getRelatedQuestions', to: 'questions#handle_get_related_questions'
     get '/questions/:questions_id/getBestAnswer', to: 'questions#handle_get_best_answer'
     get '/questions/:questions_id/getFollowers', to: 'questions#handle_get_followers'
