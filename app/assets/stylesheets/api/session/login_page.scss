@@ -210,10 +210,14 @@ input[type="password"] {
   width: 100%;
   background-color: gray;
   text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  z-index: 4;
 }
 
 .session-errors > p {
-  padding: 4px;
+  line-height: 30px;
 }
 
 .fade-out {
