@@ -106,7 +106,10 @@ export const loadMoreQustions = notInRange => dispatch => {
 
 export const reloadNewQustions = notInRange => dispatch => {
   fetchNewQuestions(notInRange).then(
-    questions => dispatch(receiveReloadNewQuestions(questions)),
+    questions => {
+      $(window).scrollTop(0);
+      dispatch(receiveReloadNewQuestions(questions));
+    },
     err => {
       dispatch(receiveErrors(err.responseJSON));
       if (window.clearSessionErrorTimerId) {
