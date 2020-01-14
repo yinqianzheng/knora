@@ -2,7 +2,7 @@ import React from "react";
 import QuestionContainer from "./question_container";
 
 // delete afterword
-import AnswerBundle from "../answer/anser_bundle";
+import AnswerBundle from "../answer/answer_bundle";
 
 export default class QuestionBundle extends React.Component {
   constructor(props) {
@@ -15,10 +15,11 @@ export default class QuestionBundle extends React.Component {
   }
 
   renderAnswerBundle() {
+    if (this.props.question.answer === undefined) return null;
     if (this.props.footer !== undefined || this.props.footer === false)
       return (
         <div className="AnswersArea">
-          <AnswerBundle />
+          <AnswerBundle answer={this.props.question.answer} />
         </div>
       );
     return null;

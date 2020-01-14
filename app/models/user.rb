@@ -11,6 +11,11 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         primary_key: :id
 
+    has_many :answers,
+        class_name: :Answer,
+        foreign_key: :author_id,
+        primary_key: :id
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return nil unless user
