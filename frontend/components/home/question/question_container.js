@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Question from "./question";
-import { deleteQuestion } from "../../../actions/question";
+import { deleteQuestion, follow, unfollow } from "../../../actions/question";
 import {
   createAnswer,
   editAnswer,
@@ -22,25 +22,16 @@ const getAnswers = id => {
   return action;
 };
 
-const followQuestion = id => {
-  alert(`follow question:${id} \n Will send a follow request to server`);
-  return action;
-};
-
-const unfollowQuestion = id => {
-  alert(`unfollow question:${id} \n Will send a unfollow request to server`);
-  return action;
-};
-
 const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  watchList: state.entities.watchList
 });
 
 const mapDispatchToProps = dispatch => ({
   selectQuestion: id => dispatch(getQuestion(id)),
   getAnswers: id => dispatch(getAnswers(id)),
-  follow: id => dispatch(followQuestion(id)),
-  unfollow: id => dispatch(unfollowQuestion(id)),
+  follow: watch => dispatch(follow(watch)),
+  unfollow: watch => dispatch(unfollow(watch)),
   deleteQuestion: id => dispatch(deleteQuestion(id)),
   createAnswer: (answer, cb) => dispatch(createAnswer(answer, cb)),
   editAnswer: answer => dispatch(editAnswer(answer)),

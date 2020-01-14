@@ -11,7 +11,8 @@
   margin: 10px 0 10px 0;
 }
 
-.upvote {
+.upvote,
+.downvote {
   margin: 5px 0 10px 0;
   cursor: pointer;
   min-width: 140px;
@@ -20,7 +21,13 @@
   font-weight: 500;
 }
 
-.upvote svg {
+.upvote svg,
+.downvote svg {
   transform: translateY(6px);
   padding-right: 10px;
+}
+
+.answer-action {
+  justify-content: space-between;
+  display: flex;
 }

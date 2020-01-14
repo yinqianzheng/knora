@@ -38,6 +38,12 @@ class Api::UsersController < ApplicationController
       end
     end
     
+    def handle_get_watch_list
+      @watch_list = Watcher.where("watcher_id = ?", params[:user_id]).pluck("question_id")
+      render json: @watch_list
+    end
+
+
     private
     
     def selected_user

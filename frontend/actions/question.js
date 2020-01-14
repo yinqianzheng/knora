@@ -3,8 +3,12 @@ import {
   updateQuestion,
   fetchNewQuestions,
   destroyQuestion,
-  fetchQuestions
+  fetchQuestions,
+  followQuestion,
+  unfollowQuestion
 } from "../utils/question";
+
+import {receiveWatch, receiveRemoveWatch } from "./user";
 
 import { receiveErrors } from "./session";
 
@@ -40,10 +44,20 @@ export const removeNewQuestion = id => ({
   id
 });
 
-export const receiveReloadNewQuestions = questions => ({
+export const receiveReloadQuestions = questions => ({
   type: RECEIVE_RELOAD_QUESTIONS,
   questions
 });
+
+const onFailure = (err, dispatch) => {
+  dispatch(receiveErrors(err.responseJSON));
+  if (window.clearSessionErrorTimerId) {
+    clearTimeout(window.clearSessionErrorTimerId);
+  }
+  window.clearSessionErrorTimerId = setTimeout(() => {
+    dispatch(receiveErrors([]));
+  }, 4000);
+};
 
 export const createNewQuestion = (formQuestion, callback) => dispatch =>
   createQuestion(formQuestion).then(
@@ -53,15 +67,7 @@ export const createNewQuestion = (formQuestion, callback) => dispatch =>
         callback();
       }
     },
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 
 export const editQuestion = (formQuestion, callback) => dispatch =>
@@ -72,15 +78,7 @@ export const editQuestion = (formQuestion, callback) => dispatch =>
         callback();
       }
     },
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 
 export const loadMoreQustions = notInRange => dispatch => {
@@ -93,15 +91,7 @@ export const loadMoreQustions = notInRange => dispatch => {
       //   dispatch(receiveHasNewQuestions(false));
       // }
     },
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 };
 
@@ -109,49 +99,49 @@ export const reloadNewQustions = notInRange => dispatch => {
   fetchNewQuestions(notInRange).then(
     questions => {
       $(window).scrollTop(0);
-      dispatch(receiveReloadNewQuestions(questions));
+      dispatch(receiveReloadQuestions(questions));
     },
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 };
 
 export const deleteQuestion = id => dispatch => {
   destroyQuestion(id).then(
     () => dispatch(removeNewQuestion(id)),
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 };
 
 export const getQuestions = () => dispatch => {
   fetchQuestions().then(
     questions => {
-      console.log(questions);
       dispatch(receiveQuestions(questions));
     },
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
+  );
+};
+
+export const reloadQustions = () => dispatch => {
+  fetchQuestions().then(
+    questions => {
+      dispatch(receiveReloadQuestions(questions));
+    },
+    err => onFailure(err, dispatch)
+  );
+};
+
+export const follow = id => dispatch => {
+  followQuestion(id).then(
+    watch => {
+      dispatch(receiveWatch(watch.id));
+    },
+    err => onFailure(err, dispatch)
+  );
+};
+
+export const unfollow = id => dispatch => {
+  unfollowQuestion(id).then(
+    watch => dispatch(receiveRemoveWatch(watch.id)),
+    err => onFailure(err, dispatch)
   );
 };

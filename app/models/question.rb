@@ -13,8 +13,13 @@ class Question < ApplicationRecord
         primary_key: :id
 
 
-    def followers
-        0
-    end
+    has_many :question_watchers_relations,
+        class_name: :Watcher,
+        foreign_key: :question_id,
+        primary_key: :id
 
+    has_many :watchers,
+        through: :question_watchers_relations,
+        source: :watcher
+     
 end

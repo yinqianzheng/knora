@@ -7,10 +7,10 @@ export default class Question extends React.Component {
     super(props);
     this.state = {
       disableClass: "",
-      follow: "unfollowed",
       render: true,
       dropdown: "hidden",
-      textEditor: "hidden"
+      textEditor: "hidden",
+      numOfFollowers: this.props.question.numOfFollowers
     };
     this.closeTextEditor = this.closeTextEditor.bind(this);
     this.handleFollow = this.handleFollow.bind(this);
@@ -56,21 +56,22 @@ export default class Question extends React.Component {
   }
 
   handleFollow() {
-    this.setState(prev => {
-      if (prev.follow === "unfollowed") {
-        this.props.follow(this.props.question.id);
-        this.props.question.numOfFollowers++;
-        return { follow: "followed" };
-      } else {
-        this.props.unfollow(this.props.question.id);
-        this.props.question.numOfFollowers--;
-        return { follow: "unfollowed" };
-      }
-    });
+    const watch = {
+      watcher_id: this.props.currentUser.id,
+      question_id: this.props.question.id
+    };
+    if (this.props.watchList.includes(this.props.question.id)) {
+      this.props.unfollow(watch);
+    } else {
+      this.props.follow(watch);
+    }
   }
 
   getFooter() {
     if (this.props.footer === false) return null;
+    const folowState = this.props.watchList.includes(this.props.question.id)
+      ? "followed"
+      : "unfollowed";
     return (
       <div>
         {this.getQuestionInfo()}
@@ -101,7 +102,7 @@ export default class Question extends React.Component {
 
             <div
               onClick={this.handleFollow}
-              className={`question-footer-left ${this.state.follow}`}
+              className={`question-footer-left ${folowState}`}
             >
               <svg
                 width="20px"
@@ -168,7 +169,7 @@ export default class Question extends React.Component {
             <EditQuestionForm type="EDIT" question={this.props.question} />
           </a>
           <a onClick={() => this.props.deleteQuestion(this.props.question.id)}>
-            delete
+            DELETE
           </a>
         </div>
       );

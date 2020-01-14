@@ -6,7 +6,7 @@ json.array! @questions do |question|
     json.authorId question.author_id
     json.title question.title
     json.numOfAnswers question.answers.count
-    json.numOfFollowers question.followers
+    json.numOfFollowers question.watchers.count
     answer = question.answers.first
     if answer 
         json.answer do 

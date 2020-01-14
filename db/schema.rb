@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_200138) do
     t.integer "views", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id", "question_id"], name: "index_answers_on_author_id_and_question_id", unique: true
+    t.index ["author_id"], name: "index_answers_on_author_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 

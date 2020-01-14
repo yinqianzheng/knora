@@ -16,6 +16,27 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         primary_key: :id
 
+    has_many :channel,
+        class_name: :Subscriber,
+        foreign_key: :user_id,
+        primary_key: :id
+
+    has_many :subscribers,
+        class_name: :Subscriber,
+        through: :channel,
+        source: :subscriber
+
+    has_many :watchers,
+        class_name: :Watcher,
+        foreign_key: :watcher_id,
+        primary_key: :id
+
+    has_many :watchlist,
+        through: :watchers,
+        source: :question
+
+    
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return nil unless user

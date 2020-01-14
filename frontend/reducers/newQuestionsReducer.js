@@ -4,6 +4,8 @@ import {
   RECEIVE_REMOVE_NQUESTIONS,
   RECEIVE_QUESTION
 } from "../actions/question";
+import { RECEIVE_WATCH, RECEIVE_REMOVE_WATCH } from "../actions/user";
+
 export function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -25,6 +27,20 @@ export default (state = [], action) => {
       return shuffle(action.questions);
     case RECEIVE_REMOVE_NQUESTIONS:
       return state.filter(question => question.id !== action.id);
+    case RECEIVE_WATCH:
+      return state.map(question => {
+        if (question.id === action.id) {
+          question.numOfFollowers++;
+        }
+        return question;
+      });
+    case RECEIVE_REMOVE_WATCH:
+      return state.map(question => {
+        if (question.id === action.id) {
+          question.numOfFollowers--;
+        }
+        return question;
+      });
     default:
       return state;
   }

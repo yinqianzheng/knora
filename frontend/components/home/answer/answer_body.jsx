@@ -37,6 +37,23 @@ export default class AnswerBody extends React.Component {
               </svg>
               <span>Upvote · {this.props.answer.upvotes}</span>
             </div>
+            <div className="downvote">
+              <svg width="22px" height="22px" viewBox="0 0 24 24" version="1.1">
+                <g
+                  stroke-width="1.5"
+                  stroke="#666"
+                  fill="none"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                >
+                  <polygon
+                    transform="translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000) "
+                    points="12 4 3 15 9 15 9 20 15 20 15 15 21 15"
+                  ></polygon>
+                </g>
+              </svg>
+              <span>Downvote</span>
+            </div>
           </div>
         </div>
       </div>

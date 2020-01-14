@@ -30,3 +30,17 @@ export const fetchNewQuestions = range =>
     method: "GET",
     data: { range }
   });
+
+export const followQuestion = watcher =>
+  $.ajax({
+    url: `/api/questions/${watcher.question_id}/watchers`,
+    method: "POST",
+    data: { watcher }
+  });
+
+export const unfollowQuestion = watcher =>
+  $.ajax({
+    url: `/api/questions/${watcher.question_id}/watchers/${watcher.watcher_id}`,
+    method: "DELETE",
+    data: { watcher }
+  });

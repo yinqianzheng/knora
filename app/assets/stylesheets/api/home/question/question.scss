@@ -105,6 +105,17 @@
   overflow: visible;
 }
 
+.question-dropdown-content button {
+  border: none;
+  background-color: transparent;
+  color: #2b6dad;
+  padding: 0;
+}
+
+.question-dropdown-content button:hover {
+  text-decoration: underline;
+}
+
 svg {
   pointer-events: none;
 }

@@ -14,51 +14,36 @@ const receiveRemoveAnswer = answerId => ({
   answerId
 });
 
+const onFailure = (err, dispatch) => {
+  dispatch(receiveErrors(err.responseJSON));
+  if (window.clearSessionErrorTimerId) {
+    clearTimeout(window.clearSessionErrorTimerId);
+  }
+  window.clearSessionErrorTimerId = setTimeout(() => {
+    dispatch(receiveErrors([]));
+  }, 4000);
+};
+
 export const createAnswer = (answer, callback) => dispatch => {
   postAnswer(answer).then(
     answer => {
-      console.log(answer);
       dispatch(receiveAnswer(answer));
       callback();
     },
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 };
 
 export const editAnswer = answer => dispatch => {
   updateAnswer(answer).then(
     answer => dispatch(receiveAnswer(answer)),
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 };
 
 export const deleteAnswer = answerId => dispatch => {
   destroyAnswer(answerId).then(
     () => dispatch(receiveRemoveAnswer(answerId)),
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 };

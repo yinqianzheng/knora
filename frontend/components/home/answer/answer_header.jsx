@@ -3,7 +3,6 @@ import UserIconContainer from "../user/user_icon_container";
 
 export default class AnswerHeader extends React.Component {
   componentDidMount() {
-    console.log(this.props.answer);
   }
   render() {
     return (

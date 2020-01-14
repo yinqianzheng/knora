@@ -24,46 +24,32 @@ export const receiveErrors = errors => ({
   errors: errors ? errors : []
 });
 
+const onFailure = (err, dispatch) => {
+  dispatch(receiveErrors(err.responseJSON));
+  if (window.clearSessionErrorTimerId) {
+    clearTimeout(window.clearSessionErrorTimerId);
+  }
+  window.clearSessionErrorTimerId = setTimeout(() => {
+    dispatch(receiveErrors([]));
+  }, 4000);
+};
+
 export const createNewUser = formUser => dispatch =>
   postUser(formUser).then(
     user => dispatch(receiveCurrentUser(user)),
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 
 export const login = formUser => dispatch =>
   postSession(formUser).then(
     user => dispatch(receiveCurrentUser(user)),
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 
 export const demoLogin = () => dispatch =>
   postDemoSession().then(
     user => dispatch(receiveCurrentUser(user)),
-    err => {
-      dispatch(receiveErrors(err.responseJSON));
-      if (window.clearSessionErrorTimerId) {
-        clearTimeout(window.clearSessionErrorTimerId);
-      }
-      window.clearSessionErrorTimerId = setTimeout(() => {
-        dispatch(receiveErrors([]));
-      }, 4000);
-    }
+    err => onFailure(err, dispatch)
   );
 
 export const logout = () => dispatch =>

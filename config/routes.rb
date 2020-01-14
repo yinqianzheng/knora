@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show] do
-      resources :follows, only: [:create, :destroy]
+      resources :subscribers, only: [:create, :destroy]
     end
     resource :session, only: [:create, :destroy]
 
     resources :questions, only: [:index, :create, :show, :destroy, :update]  do 
       resources :answers, only: [:create, :index]
-      resources :question_follows, only: [:create, :destroy]
+      resources :watchers, only: [:create, :destroy]
     end
     resources :answers, only: [:show, :destroy, :update] do
       resources :comments, only: [:create, :index]
@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
     ## users
     get '/users/:user_id/getFollowers', to: 'users#handle_get_followers'
+    get '/users/:user_id/getWatchList', to: 'users#handle_get_watch_list'
+
 
     ## topics
     get '/topics/:topic_id/getFollowers', to: 'topics#handle_get_followers'

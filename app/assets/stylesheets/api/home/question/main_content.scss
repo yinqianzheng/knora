@@ -12,6 +12,7 @@
   font-weight: 500;
   display: flex;
   position: relative;
+  height: 50px;
 }
 
 .start-icon {
@@ -25,4 +26,5 @@
 
 .qustions-box-title > h2 {
   padding-left: 35px;
+  transform: translateY(-12px);
 }
