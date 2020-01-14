@@ -4,10 +4,11 @@ class CreateAnswers < ActiveRecord::Migration[5.2]
       t.text :body, null: false
       t.integer :author_id, null: false
       t.integer :question_id, null: false
+      t.integer :views, default: 0
       t.timestamps
     end
 
-    add_index :answers, :author_id, unique: true
-    add_index :answers, :question_id, unique: true
+    add_index :answers, [:author_id, :question_id], unique: true
+    add_index :answers, :question_id
   end
 end

@@ -31,7 +31,7 @@ class Api::SessionsController < ApplicationController
           login!(@user)
           render 'api/users/show'
         else
-          @user = User.new(email: email, firstname: payload['given_name'], lastname:payload['family_name'], password:SecureRandom.urlsafe_base64)
+          @user = User.new(imageUrl: payload['picture'], email: email, firstname: payload['given_name'], lastname:payload['family_name'], password:SecureRandom.urlsafe_base64)
           if @user.save
             login!(@user)
             render 'api/users/show'

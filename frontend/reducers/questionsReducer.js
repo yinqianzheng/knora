@@ -1,16 +1,10 @@
 import {
   RECEIVE_QUESTIONS,
+  RECEIVE_QUESTION,
   RECEIVE_RELOAD_QUESTIONS,
-  RECEIVE_REMOVE_NQUESTIONS,
-  RECEIVE_QUESTION
+  RECEIVE_REMOVE_NQUESTIONS
 } from "../actions/question";
-export function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+import { shuffle } from "./newQuestionsReducer";
 
 export default (state = [], action) => {
   Object.freeze(state);

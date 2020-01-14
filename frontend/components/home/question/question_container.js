@@ -1,7 +1,11 @@
 import { connect } from "react-redux";
 import Question from "./question";
-import { deleteQuestion, editQuestion } from "../../../actions/question";
-
+import { deleteQuestion } from "../../../actions/question";
+import {
+  createAnswer,
+  editAnswer,
+  deleteAnswer
+} from "../../../actions/answer";
 const action = { type: "TEST", test: {} };
 
 const getQuestion = id => {
@@ -37,7 +41,10 @@ const mapDispatchToProps = dispatch => ({
   getAnswers: id => dispatch(getAnswers(id)),
   follow: id => dispatch(followQuestion(id)),
   unfollow: id => dispatch(unfollowQuestion(id)),
-  deleteQuestion: id => dispatch(deleteQuestion(id))
+  deleteQuestion: id => dispatch(deleteQuestion(id)),
+  createAnswer: (answer, cb) => dispatch(createAnswer(answer, cb)),
+  editAnswer: answer => dispatch(editAnswer(answer)),
+  deleteAnswer: id => dispatch(deleteAnswer(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);

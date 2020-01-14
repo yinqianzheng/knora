@@ -7,9 +7,11 @@ class Question < ApplicationRecord
         primary_key: :id
 
 
-    def answers 
-        0
-    end
+    has_many :answers,
+        class_name: :Answer,
+        foreign_key: :question_id,
+        primary_key: :id
+
 
     def followers
         0

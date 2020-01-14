@@ -5,6 +5,12 @@ export const createQuestion = question =>
     data: { question }
   });
 
+export const fetchQuestions = () =>
+  $.ajax({
+    url: "/api/questions",
+    method: "GET"
+  });
+
 export const destroyQuestion = questionId =>
   $.ajax({
     url: `/api/questions/${questionId}`,
