@@ -7,21 +7,21 @@ json.array! @questions do |question|
     json.title question.title
     json.numOfAnswers question.answers.count
     json.numOfFollowers question.watchers.count
-    answer = question.answers.first
-    if answer 
-        json.answer do 
-            json.id answer.id 
-            json.questionId answer.question_id 
-            json.updatedAt Time.at(answer.updated_at).strftime("%b %e, %Y")
+    answers = question.answers.limit(1)
+    if answers
+        json.answers answers do |ans|
+            json.id ans.id 
+            json.questionId ans.question_id 
+            json.updatedAt Time.at(ans.updated_at).strftime("%b %e, %Y")
             json.author do
-                json.id answer.author.id
-                json.imageUrl answer.author.imageUrl
-                json.firstname answer.author.firstname
-                json.lastname answer.author.lastname
+                json.id ans.author.id
+                json.imageUrl ans.author.imageUrl
+                json.firstname ans.author.firstname
+                json.lastname ans.author.lastname
             end
-            json.body answer.body 
-            json.views answer.views 
-            json.upvotes 9
+            json.body ans.body 
+            json.views ans.views 
+            json.upvotes ans.upvotes.where("upvote = true").count - ans.upvotes.where("upvote = false").count
         end
     end
     

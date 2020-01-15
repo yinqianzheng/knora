@@ -35,6 +35,16 @@ class User < ApplicationRecord
         through: :watchers,
         source: :question
 
+    has_many :upvotes,
+        class_name: :Vote,
+        foreign_key: :user_id,
+        primary_key: :id
+
+    has_many :upvoted_answers,
+        through: :upvotes,
+        source: :answer
+
+    
     
 
     def self.find_by_credentials(email, password)

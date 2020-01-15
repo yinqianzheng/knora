@@ -3,15 +3,30 @@ import React from "react";
 export default class AnswerBody extends React.Component {
   constructor(props) {
     super(props);
-    // this.createElementFromHTML = this.createElementFromHTML.bind(this);
+    this.upvote = this.upvote.bind(this);
+    this.downvote = this.downvote.bind(this);
+    this.vote = {
+      user_id: this.props.currentUser.id,
+      answer_id: this.props.answer.id
+    };
   }
 
-  // createElementFromHTML(htmlString) {
-  //   var div = React.createElement("div");
-  //   div.innerHTML = htmlString.trim();
-  //   return div;
-  // }
+  upvote() {
+    const vote = Object.assign({}, this.vote);
+    vote.upvote = true;
+    this.props.upvote(vote);
+  }
+
+  downvote() {
+    const vote = Object.assign({}, this.vote);
+    vote.upvote = false;
+    this.props.downvote(vote);
+  }
+
   render() {
+    console.log("----------------");
+
+    console.log(this.props.answer);
     return (
       <div>
         <div
@@ -23,7 +38,14 @@ export default class AnswerBody extends React.Component {
             {this.props.answer.views} views
           </div>
           <div className="answer-action">
-            <div className="upvote">
+            <div
+              className={`upvote ${
+                this.props.voteList[this.props.answer.id] === true
+                  ? "upvoted"
+                  : ""
+              }`}
+              onClick={this.upvote}
+            >
               <svg width="22px" height="22px" viewBox="0 0 24 24" version="1.1">
                 <g
                   stroke-width="1.5"
@@ -37,7 +59,14 @@ export default class AnswerBody extends React.Component {
               </svg>
               <span>Upvote · {this.props.answer.upvotes}</span>
             </div>
-            <div className="downvote">
+            <div
+              className={`downvote ${
+                this.props.voteList[this.props.answer.id] === false
+                  ? "downvoted"
+                  : ""
+              }`}
+              onClick={this.downvote}
+            >
               <svg width="22px" height="22px" viewBox="0 0 24 24" version="1.1">
                 <g
                   stroke-width="1.5"

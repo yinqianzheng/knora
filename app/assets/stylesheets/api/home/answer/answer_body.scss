@@ -31,3 +31,13 @@
   justify-content: space-between;
   display: flex;
 }
+
+.upvoted,
+.downvoted {
+  color: #329bff;
+}
+
+.upvoted g,
+.downvoted g {
+  stroke: #329bff;
+}

@@ -15,11 +15,13 @@ export default class QuestionBundle extends React.Component {
   }
 
   renderAnswerBundle() {
-    if (this.props.question.answer === undefined) return null;
+    if (this.props.question.answers === undefined) return null;
     if (this.props.footer !== undefined || this.props.footer === false)
       return (
         <div className="AnswersArea">
-          <AnswerBundle answer={this.props.question.answer} />
+          {this.props.question.answers.map(answer => (
+            <AnswerBundle answer={answer} />
+          ))}
         </div>
       );
     return null;

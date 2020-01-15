@@ -11,5 +11,13 @@ class Answer < ApplicationRecord
         foreign_key: :question_id,
         primary_key: :id
 
+    has_many :upvotes,
+        class_name: :Vote,
+        foreign_key: :answer_id,
+        primary_key: :id
+
+    has_many :likers,
+        through: :upvotes,
+        source: :user
 
 end

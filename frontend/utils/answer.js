@@ -17,3 +17,17 @@ export const updateAnswer = answer =>
     method: "PATCH",
     data: { answer }
   });
+
+export const upvote = vote =>
+  $.ajax({
+    url: `/api/answers/${vote.answerId}/votes`,
+    method: "POST",
+    data: { vote }
+  });
+
+export const downvote = vote =>
+  $.ajax({
+    url: `/api/answers/${vote.answerId}/votes/${vote.userId}`,
+    method: "DELETE",
+    data: { vote }
+  });

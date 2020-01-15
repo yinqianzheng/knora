@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resources :answers, only: [:show, :destroy, :update] do
       resources :comments, only: [:create, :index]
+      resources :votes, only: [:create, :destroy]
     end
 
     resources :comments, only: [:show, :update, :destroy]
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
     ## users
     get '/users/:user_id/getFollowers', to: 'users#handle_get_followers'
     get '/users/:user_id/getWatchList', to: 'users#handle_get_watch_list'
+    get '/users/:user_id/getVoteList', to: 'users#handle_get_vote_list'
 
 
     ## topics

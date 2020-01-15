@@ -1,12 +1,46 @@
-import { postAnswer, updateAnswer, destroyAnswer } from "../utils/answer";
+import {
+  postAnswer,
+  updateAnswer,
+  destroyAnswer,
+  upvote,
+  downvote
+} from "../utils/answer";
 import { receiveErrors } from "./session";
 
 export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 export const RECEIVE_REMOVE_ANSWER = "RECEIVE_REMOVE_ANSWER";
+export const RECEIVE_UPVOTE = "RECEIVE_UPVOTE";
+export const RECEIVE_DOWNVOTE = "RECEIVE_DOWNVOTE";
+export const RECEIVE_REMOVE_VOTE = "RECEIVE_REMOVE_VOTE";
 
 const receiveAnswer = answer => ({
   type: RECEIVE_ANSWER,
   answer
+});
+
+const receiveUpvote = vote => ({
+  type: RECEIVE_UPVOTE,
+  vote
+});
+
+const receiveRemoveVote = vote => ({
+  type: RECEIVE_REMOVE_VOTE,
+  vote
+});
+
+const removeUpvote = vote => ({
+  type: REMOVE_UPVOTE,
+  vote
+});
+
+const removeDownvote = vote => ({
+  type: REMOVE_DOWNVOTE,
+  vote
+});
+
+const receiveDownvote = vote => ({
+  type: RECEIVE_DOWNVOTE,
+  vote
 });
 
 const receiveRemoveAnswer = answerId => ({
@@ -44,6 +78,32 @@ export const editAnswer = answer => dispatch => {
 export const deleteAnswer = answerId => dispatch => {
   destroyAnswer(answerId).then(
     () => dispatch(receiveRemoveAnswer(answerId)),
+    err => onFailure(err, dispatch)
+  );
+};
+
+export const voteUp = vote => dispatch => {
+  upvote(vote).then(
+    vote => {
+      if (vote.action === "ADD_VOTE") {
+        dispatch(receiveUpvote(vote));
+      } else {
+        dispatch(receiveRemoveVote(vote));
+      }
+    },
+    err => onFailure(err, dispatch)
+  );
+};
+
+export const voteDown = vote => dispatch => {
+  downvote(vote).then(
+    vote => {
+      if (vote.action === "ADD_DOWNVOTE") {
+        dispatch(receiveDownvote(vote));
+      } else {
+        dispatch(receiveRemoveVote(vote));
+      }
+    },
     err => onFailure(err, dispatch)
   );
 };

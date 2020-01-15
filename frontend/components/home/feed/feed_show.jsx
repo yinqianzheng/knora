@@ -8,6 +8,7 @@ export default class FeedShow extends React.Component {
       this.props.fetchQuestions();
     }
     this.props.fetchWatchList(this.props.currentUser.id);
+    this.props.fetchVoteList(this.props.currentUser.id);
   }
 
   render() {
@@ -17,7 +18,7 @@ export default class FeedShow extends React.Component {
         <div>
           {this.props.questions.map(question => (
             <QuestionBundle
-              footer={question.answer ? false : true}
+              footer={question.answers.length > 0 ? false : true}
               question={question}
             />
           ))}

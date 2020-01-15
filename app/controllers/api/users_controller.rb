@@ -39,10 +39,14 @@ class Api::UsersController < ApplicationController
     end
     
     def handle_get_watch_list
-      @watch_list = Watcher.where("watcher_id = ?", params[:user_id]).pluck("question_id")
-      render json: @watch_list
+      watch_list = Watcher.where("watcher_id = ?", params[:user_id]).pluck("question_id")
+      render json: watch_list
     end
 
+    def handle_get_vote_list
+      vote_list = Vote.where("user_id = ?", params[:user_id]).pluck("answer_id, upvote")
+      render json: vote_list
+    end
 
     private
     
@@ -54,3 +58,5 @@ class Api::UsersController < ApplicationController
       params.require(:user).permit(:firstname, :lastname, :email, :password)
     end
 end
+
+
