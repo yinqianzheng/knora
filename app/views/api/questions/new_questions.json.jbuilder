@@ -6,4 +6,5 @@ json.array! @questions do |question|
     json.numOfAnswers question.answers.count
     json.numOfFollowers question.watchers.count
     json.authorId question.author_id
+    json.answers []
 end
