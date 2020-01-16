@@ -37,7 +37,6 @@ class Api::QuestionsController < ApplicationController
 
   def handle_get_new_questions
     @questions = Question.order('RANDOM()').where('id NOT IN (?)', params[:range]).limit(12)
-
     render 'api/questions/new_questions'
   end
 

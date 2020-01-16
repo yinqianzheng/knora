@@ -105,8 +105,8 @@ export default class AnswerBody extends React.Component {
             preloadedText={this.props.answer.body}
           />
           <div className="text-editor-footer">
-            <a onClick={this.cancelEdit}>----cancel</a>
-            <button onClick={this.submitEdit}>Edit</button>
+            <button onClick={this.submitEdit}>Submit</button>
+            <a onClick={this.cancelEdit}>Cancel</a>
           </div>
         </div>
       );

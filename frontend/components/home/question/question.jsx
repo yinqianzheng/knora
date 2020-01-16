@@ -195,12 +195,10 @@ export default class Question extends React.Component {
             </div>
           </div>
           <div className={`text-editor-container ${this.state.textEditor}`}>
-            <div className="text-editor-header">header</div>
             <TextEditor ref={this.textEditor} />
             <div className="text-editor-footer">
-              footer
-              <a onClick={this.closeTextEditor}>----cancel</a>
               <button onClick={this.submitAnswer}>Submit</button>
+              <a onClick={this.closeTextEditor}>Cancel</a>
             </div>
           </div>
         </div>

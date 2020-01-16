@@ -13,6 +13,7 @@ export default class SearchBar extends React.Component {
     this.updateSearch = this.updateSearch.bind(this);
     this.renderResultBox = this.renderResultBox.bind(this);
   }
+
   updateSearch(e) {
     if (e.currentTarget.value !== "") {
       this.setState({

@@ -20,3 +20,4 @@ if answers
         json.upvotes ans.upvotes.where("upvote = true").count - ans.upvotes.where("upvote = false").count
     end
 end
+json.relatedQuestions @question.related_questions()
