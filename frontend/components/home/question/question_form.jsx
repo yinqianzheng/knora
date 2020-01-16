@@ -20,6 +20,16 @@ export default class QuestionForm extends React.Component {
       display: "hidden",
       title: ""
     });
+    const dropdowns = document.getElementsByClassName(
+      "question-dropdown-content"
+    );
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (!openDropdown.classList.contains("hidden")) {
+        openDropdown.classList.add("hidden");
+      }
+    }
   }
 
   showModal() {

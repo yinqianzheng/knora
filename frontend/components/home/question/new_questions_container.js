@@ -7,7 +7,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadMoreQustions: range => dispatch(loadMoreQustions(range))
+  loadMoreQustions: range => dispatch(loadMoreQustions(range)),
+  clearQuestions: () => dispatch(clearQuestions())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewQuestions);

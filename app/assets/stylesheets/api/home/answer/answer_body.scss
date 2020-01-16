@@ -41,3 +41,73 @@
 .downvoted g {
   stroke: #329bff;
 }
+
+.answer-footer-more {
+  right: 0;
+  display: inline-block;
+  height: 24px;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+  padding: 7px 12px 7px 12px;
+  border-radius: 40px;
+  transform: translate(12px, 4px);
+  z-index: 2;
+}
+
+.answer-footer-more a:hover {
+  background-color: #ddd;
+}
+
+.answer-dropdown-content {
+  position: absolute;
+  background-color: #f7f7f7;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 8px;
+  overflow: visible;
+  display: block;
+}
+
+.answer-dropdown-content a {
+  border: none;
+  background-color: transparent;
+  color: #2b6dad;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.answer-dropdown-content a:hover {
+  text-decoration: underline;
+  background-color: #ddd;
+}
+
+// .answer-footer-more svg {
+//   transform: translate(-8px, 12px);
+// }
+.answer-dropdown-content:before {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-color: rgba(204, 204, 204, 0);
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid transparent;
+  border-bottom: 7px solid #ccc;
+  margin-top: -8px;
+  margin-left: 130px;
+  background-color: transparent;
+}
+
+.answer-body-edit > .quill {
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}

@@ -4,20 +4,32 @@ import {
   fetchNewQuestions,
   destroyQuestion,
   fetchQuestions,
+  fetchQuestion,
   followQuestion,
   unfollowQuestion
 } from "../utils/question";
 
-import {receiveWatch, receiveRemoveWatch } from "./user";
+import { receiveWatch, receiveRemoveWatch } from "./user";
 
 import { receiveErrors } from "./session";
 
 export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_RELOAD_QUESTIONS = "RECEIVE_RELOAD_QUESTIONS";
+export const RECEIVE_RELOAD_NEW_QUESTIONS = "RECEIVE_RELOAD_NEW_QUESTIONS";
 export const RECEIVE_DELETE_QUESTION = "RECEIVE_DELETE_QUESTION";
 export const RECEIVE_HAS_NEW_QUESTIONS = "RECEIVE_HAS_NEW_QUESTIONS";
 export const RECEIVE_REMOVE_NQUESTIONS = "RECEIVE_REMOVE_NQUESTIONS";
+export const CLEAR_QUESTIONS = "CLEAR_QUESTIONS";
+export const RECEIVE_SELECTED_QUESTION = "RECEIVE_SELECTED_QUESTION";
+
+export const receiveClearQuestions = () => ({
+  type: CLEAR_QUESTIONS
+});
+
+export const clearQuestions = () => dispatch => {
+  dispatch(receiveClearQuestions());
+};
 
 export const receiveQuestion = question => ({
   type: RECEIVE_QUESTION,
@@ -46,6 +58,11 @@ export const removeNewQuestion = id => ({
 
 export const receiveReloadQuestions = questions => ({
   type: RECEIVE_RELOAD_QUESTIONS,
+  questions
+});
+
+export const receiveReloadNewQuestions = questions => ({
+  type: RECEIVE_RELOAD_NEW_QUESTIONS,
   questions
 });
 
@@ -99,7 +116,21 @@ export const reloadNewQustions = notInRange => dispatch => {
   fetchNewQuestions(notInRange).then(
     questions => {
       $(window).scrollTop(0);
-      dispatch(receiveReloadQuestions(questions));
+      dispatch(receiveReloadNewQuestions(questions));
+    },
+    err => onFailure(err, dispatch)
+  );
+};
+
+export const receiveSelectedQuestion = question => ({
+  type: RECEIVE_SELECTED_QUESTION,
+  question
+});
+
+export const loadQustion = id => dispatch => {
+  fetchQuestion(id).then(
+    question => {
+      dispatch(receiveSelectedQuestion(question));
     },
     err => onFailure(err, dispatch)
   );

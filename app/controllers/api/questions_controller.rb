@@ -41,6 +41,16 @@ class Api::QuestionsController < ApplicationController
     render 'api/questions/new_questions'
   end
 
+  def show
+    @question = Question.find(params[:id])
+    render :show
+  end
+
+  def handle_search
+    results = ActiveRecord::Base.connection.exec_query("select id, title from (select id, title, (" + params[:words].split(" ").map{|w| "(case when title like '%#{w}%' then 1 else 0 end)"}.join("+") + ") as count from questions order by count desc) as t where t.count > 0 limit 5")
+    render json: results
+  end
+
   private
   def question_params
     params.require(:question).permit(:title, :author_id)

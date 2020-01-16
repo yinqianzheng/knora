@@ -11,6 +11,12 @@ export const fetchQuestions = () =>
     method: "GET"
   });
 
+export const fetchQuestion = id =>
+  $.ajax({
+    url: `/api/questions/${id}`,
+    method: "GET"
+  });
+
 export const destroyQuestion = questionId =>
   $.ajax({
     url: `/api/questions/${questionId}`,

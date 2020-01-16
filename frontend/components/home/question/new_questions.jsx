@@ -9,6 +9,10 @@ export default class NewQestions extends React.Component {
     this.loadMore = this.loadMore.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearQuestions();
+  }
+
   loadMore() {
     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
       const range = [0];

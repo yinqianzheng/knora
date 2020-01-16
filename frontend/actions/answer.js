@@ -68,9 +68,12 @@ export const createAnswer = (answer, callback) => dispatch => {
   );
 };
 
-export const editAnswer = answer => dispatch => {
+export const editAnswer = (answer, cb) => dispatch => {
   updateAnswer(answer).then(
-    answer => dispatch(receiveAnswer(answer)),
+    answer => {
+      dispatch(receiveAnswer(answer));
+      cb();
+    },
     err => onFailure(err, dispatch)
   );
 };

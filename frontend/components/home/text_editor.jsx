@@ -4,7 +4,9 @@ import ReactQuill from "react-quill";
 export default class TextEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: "" };
+    this.state = {
+      text: this.props.preloadedText ? this.props.preloadedText : ""
+    };
     this.handleChange = this.handleChange.bind(this);
     this.modules = {
       toolbar: [

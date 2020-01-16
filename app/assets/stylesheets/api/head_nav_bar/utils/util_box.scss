@@ -8,6 +8,7 @@
   display: flex;
   border: 1px solid #e2e2e2;
   border-radius: 5px;
+  height: 27px;
 }
 
 .search-bar {
@@ -24,4 +25,25 @@ input[type="search"] {
   font-size: 16px;
   border-radius: 2px;
   border: none;
+  width: 250px;
+}
+
+.result-list {
+  list-style-type: none;
+  font-size: 18px;
+}
+
+.result-list > li {
+  padding: 15px 0 15px 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.search-result {
+  position: fixed;
+  z-index: 3;
+  border: 1px solid #efefef;
+  background-color: white;
+  margin: 20px 0 0 -30px;
+  padding-right: 35px;
+  border-radius: 3px;
 }

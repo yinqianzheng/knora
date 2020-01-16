@@ -2,7 +2,8 @@ import {
   RECEIVE_QUESTIONS,
   RECEIVE_QUESTION,
   RECEIVE_RELOAD_QUESTIONS,
-  RECEIVE_REMOVE_NQUESTIONS
+  RECEIVE_REMOVE_NQUESTIONS,
+  CLEAR_QUESTIONS
 } from "../actions/question";
 import {
   RECEIVE_UPVOTE,
@@ -79,6 +80,8 @@ export default (state = [], action) => {
         }
         return question;
       });
+    case CLEAR_QUESTIONS:
+      return [];
     default:
       return state;
   }

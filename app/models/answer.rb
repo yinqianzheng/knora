@@ -21,3 +21,4 @@ class Answer < ApplicationRecord
         source: :user
 
 end
+

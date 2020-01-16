@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get '/questions/:questions_id/getRelatedQuestions', to: 'questions#handle_get_related_questions'
     get '/questions/:questions_id/getBestAnswer', to: 'questions#handle_get_best_answer'
     get '/questions/:questions_id/getFollowers', to: 'questions#handle_get_followers'
+    get '/search', to: 'questions#handle_search'
 
     ## users
     get '/users/:user_id/getFollowers', to: 'users#handle_get_followers'

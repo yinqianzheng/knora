@@ -21,18 +21,33 @@ export default class Question extends React.Component {
     this.getMoreDropDown = this.getMoreDropDown.bind(this);
     this.textEditor = React.createRef();
     this.submitAnswer = this.submitAnswer.bind(this);
+    this.deleteQuestion = this.deleteQuestion.bind(this);
+    this.showDetails = this.showDetails.bind(this);
+  }
+
+  showDetails() {
+    if (this.props.type !== "DETAIL") {
+      this.props.history.push(`question_details/${this.props.question.id}`);
+    }
+  }
+
+  deleteQuestion() {
+    this.props.deleteQuestion(this.props.question.id);
+    if (this.props.type === "DETAIL") {
+      this.props.history.push("/feed");
+    }
   }
 
   componentDidMount() {
     window.onclick = function(event) {
-      const dropdowns = document.getElementsByClassName(
+      const questionDropdowns = document.getElementsByClassName(
         "question-dropdown-content"
       );
       let i;
-      for (i = 0; i < dropdowns.length; i++) {
-        let openDropdown = dropdowns[i];
-        if (!openDropdown.classList.contains("hidden")) {
-          openDropdown.classList.add("hidden");
+      for (i = 0; i < questionDropdowns.length; i++) {
+        let openQDropdown = questionDropdowns[i];
+        if (!openQDropdown.classList.contains("hidden")) {
+          openQDropdown.classList.add("hidden");
         }
       }
       if (
@@ -41,7 +56,38 @@ export default class Question extends React.Component {
       ) {
         event.target.children[1].classList.remove("hidden");
       }
+      if (event.target.matches(".edit-question-btn")) {
+        event.target.parentElement.parentElement.parentElement.classList.remove(
+          "hidden"
+        );
+      }
+
+      const dropdowns = document.getElementsByClassName(
+        "answer-dropdown-content"
+      );
+      let j;
+      for (j = 0; j < dropdowns.length; j++) {
+        let openDropdown = dropdowns[j];
+        if (!openDropdown.classList.contains("hidden")) {
+          openDropdown.classList.add("hidden");
+        }
+      }
+      if (
+        event.target.matches(".answer-footer-more") &&
+        event.target.children[1]
+      ) {
+        event.target.children[1].classList.remove("hidden");
+      }
+      if (event.target.matches(".edit-answer-btn")) {
+        event.target.parentElement.parentElement.parentElement.classList.remove(
+          "hidden"
+        );
+      }
     };
+  }
+
+  componentWillUnmount() {
+    $(window).off("click");
   }
 
   submitAnswer() {
@@ -53,6 +99,7 @@ export default class Question extends React.Component {
       },
       this.closeTextEditor
     );
+    this.textEditor.current.setState({ text: "" });
   }
 
   handleFollow() {
@@ -168,7 +215,7 @@ export default class Question extends React.Component {
           <a>
             <EditQuestionForm type="EDIT" question={this.props.question} />
           </a>
-          <a onClick={() => this.props.deleteQuestion(this.props.question.id)}>
+          <a className="delete" onClick={this.deleteQuestion}>
             DELETE
           </a>
         </div>
@@ -198,7 +245,7 @@ export default class Question extends React.Component {
     return (
       <div className="question-info">
         <a
-          onClick={() => this.props.getAnswers(this.props.question.id)}
+          onClick={this.showDetails}
         >{`${this.props.question.numOfAnswers} Answers`}</a>
       </div>
     );
@@ -206,7 +253,10 @@ export default class Question extends React.Component {
 
   getTopicCard() {
     const text = this.props.footer !== false ? "Question" : "Answer";
-    if (this.props.footer !== undefined || this.props.footer === false)
+    if (
+      this.props.type !== "DETAIL" &&
+      (this.props.footer !== undefined || this.props.footer === false)
+    )
       return <div className="reason_text">{text} · Recommended for you</div>;
     return <div className="topic-card">topics placeholder</div>;
   }
@@ -217,11 +267,7 @@ export default class Question extends React.Component {
         {this.getTopicCard()}
         <div className="question-card">
           <h1>
-            <a
-              onClick={() => this.props.selectQuestion(this.props.question.id)}
-            >
-              {this.props.question.title}
-            </a>
+            <a onClick={this.showDetails}>{this.props.question.title}</a>
           </h1>
           {this.getFooter()}
         </div>

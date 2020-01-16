@@ -25,7 +25,7 @@ export default class HeadItems extends React.Component {
         </NavLink>
         <NavLink
           className={seletedClass}
-          to="answer"
+          to="/answer"
           onClick={this.props.reloadNewQustions}
           activeStyle={{ outline: "none" }}
           activeClassName="selected"

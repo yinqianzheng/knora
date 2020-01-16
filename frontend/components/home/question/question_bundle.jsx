@@ -9,6 +9,7 @@ export default class QuestionBundle extends React.Component {
     super(props);
     this.closeWindow = this.closeWindow.bind(this);
     this.renderAnswerBundle = this.renderAnswerBundle.bind(this);
+    this.renderCloseBtn = this.renderCloseBtn.bind(this);
   }
   closeWindow() {
     this.props.removeQuestion(this.props.question.id);
@@ -27,17 +28,25 @@ export default class QuestionBundle extends React.Component {
     return null;
   }
 
+  renderCloseBtn() {
+    if (this.props.type === "DETAIL") return null;
+    return (
+      <div onClick={this.closeWindow} className="remove-question-btn">
+        x
+      </div>
+    );
+  }
+
   render() {
     return (
       <div>
         <div className="QuestionArea">
-          <div onClick={this.closeWindow} className="remove-question-btn">
-            x
-          </div>
+          {this.renderCloseBtn()}
           <div className="question-head"></div>
           <QuestionContainer
             footer={this.props.footer}
             question={this.props.question}
+            type={this.props.type}
           />
           {this.renderAnswerBundle()}
         </div>

@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import Question from "./question";
+
 import { deleteQuestion, follow, unfollow } from "../../../actions/question";
 import {
   createAnswer,
-  editAnswer,
   deleteAnswer
 } from "../../../actions/answer";
-const action = { type: "TEST", test: {} };
+import { withRouter } from "react-router-dom";
+const action = { type: "REDIRECT", test: {} };
 
 const getQuestion = id => {
   alert(
@@ -34,8 +35,9 @@ const mapDispatchToProps = dispatch => ({
   unfollow: watch => dispatch(unfollow(watch)),
   deleteQuestion: id => dispatch(deleteQuestion(id)),
   createAnswer: (answer, cb) => dispatch(createAnswer(answer, cb)),
-  editAnswer: answer => dispatch(editAnswer(answer)),
   deleteAnswer: id => dispatch(deleteAnswer(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Question)
+);

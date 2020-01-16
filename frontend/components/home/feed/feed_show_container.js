@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import FeedShow from "./feed_show";
-import { getQuestions } from "../../../actions/question";
+import { reloadQustions, clearQuestions } from "../../../actions/question";
 import { fetchWatchedQuestions, fetchVoteList } from "../../../actions/user";
 
 const mapStateToProps = state => ({
@@ -9,9 +9,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchQuestions: () => dispatch(getQuestions()),
+  fetchQuestions: () => dispatch(reloadQustions()),
   fetchWatchList: id => dispatch(fetchWatchedQuestions(id)),
-  fetchVoteList: id => dispatch(fetchVoteList(id))
+  fetchVoteList: id => dispatch(fetchVoteList(id)),
+  clearQuestions: () => dispatch(clearQuestions())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedShow);

@@ -1,8 +1,9 @@
 import {
   RECEIVE_QUESTIONS,
-  RECEIVE_RELOAD_QUESTIONS,
+  RECEIVE_RELOAD_NEW_QUESTIONS,
   RECEIVE_REMOVE_NQUESTIONS,
-  RECEIVE_QUESTION
+  RECEIVE_QUESTION,
+  CLEAR_QUESTIONS
 } from "../actions/question";
 import { RECEIVE_WATCH, RECEIVE_REMOVE_WATCH } from "../actions/user";
 
@@ -23,24 +24,26 @@ export default (state = [], action) => {
       return state.map(question =>
         question.id === action.question.id ? action.question : question
       );
-    case RECEIVE_RELOAD_QUESTIONS:
+    case RECEIVE_RELOAD_NEW_QUESTIONS:
       return shuffle(action.questions);
     case RECEIVE_REMOVE_NQUESTIONS:
       return state.filter(question => question.id !== action.id);
     case RECEIVE_WATCH:
       return state.map(question => {
         if (question.id === action.id) {
-          question.numOfFollowers++;
+          question.numOfFollowers += 1;
         }
         return question;
       });
     case RECEIVE_REMOVE_WATCH:
       return state.map(question => {
         if (question.id === action.id) {
-          question.numOfFollowers--;
+          question.numOfFollowers -= 1;
         }
         return question;
       });
+    case CLEAR_QUESTIONS:
+      return [];
     default:
       return state;
   }
