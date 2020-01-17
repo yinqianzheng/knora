@@ -5,7 +5,8 @@ import { fetchWatchedQuestions, fetchVoteList } from "../../../actions/user";
 
 const mapStateToProps = state => ({
   questions: state.entities.questions,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  topic: state.entities.selectedTopic
 });
 
 const mapDispatchToProps = dispatch => ({
