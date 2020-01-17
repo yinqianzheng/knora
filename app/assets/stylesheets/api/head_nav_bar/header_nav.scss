@@ -20,6 +20,10 @@
   margin: 0 auto;
 }
 
+.nav-logo:hover {
+  text-decoration: none;
+}
+
 .nav-logo {
   font-family: "Libre Baskerville", serif;
   color: #b92b26;
@@ -67,15 +71,12 @@
 
 .head-nav-right {
   position: absolute;
-  overflow: auto;
+  overflow: visible;
   width: 450px;
   right: 1%;
 }
 
-.logout-btn {
-  float: right;
-  height: 20px;
-}
+
 
 .add-question-btn {
   height: 28px;
@@ -105,6 +106,10 @@
   position: absolute;
   top: 12px;
   left: 13px;
+}
+
+.haed-nav-icon svg {
+  padding-right: 5px;
 }
 
 .haed-nav-item:hover {

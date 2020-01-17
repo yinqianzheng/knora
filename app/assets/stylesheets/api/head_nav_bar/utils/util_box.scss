@@ -47,3 +47,24 @@ input[type="search"] {
   padding-right: 35px;
   border-radius: 3px;
 }
+
+.logout-btn {
+  position: absolute;
+  left: -35px;
+  width: 200px;
+  border: 1px solid #ccc;
+  background-color: white;
+  box-sizing: border-box;
+  transition: opacity ease-in-out 100ms, color ease-in-out 100ms,
+    background-color ease-in-out 100ms, border-color ease-in-out 100ms;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.2);
+  display: none;
+}
+.logout-btn > a {
+  margin: 20px;
+  cursor: pointer;
+}
+.nav-icon-container:hover .logout-btn {
+  display: block;
+}

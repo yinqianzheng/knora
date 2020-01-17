@@ -1,0 +1,61 @@
+.left-bar > ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.left-bar li {
+  margin-bottom: 8px;
+  padding: 4px;
+  margin-left: -4px;
+  border-radius: 3px;
+  color: #666;
+  font-size: 13px;
+  display: flex;
+}
+
+.left-bar li:hover {
+  color: #2b6dad;
+}
+
+.left-bar svg {
+  transform: translate(3px, 1px);
+}
+
+.left-bar > ul > li > div {
+  width: 18px;
+  margin-right: 8px;
+  border-radius: 2px;
+}
+.left-bar li:hover {
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+.left-bar img {
+  width: 100%;
+}
+
+.red {
+  background: #b92b27;
+}
+
+.blue {
+  background-color: rgb(56, 146, 211);
+}
+
+.yellow {
+  background-color: rgb(255, 206, 142);
+}
+
+.purple {
+  background-color: #c194e7;
+}
+
+.left-bar-li {
+  background-color: #e6e6e6;
+}
+
+.left-bar {
+  position: fixed;
+}

@@ -15,7 +15,7 @@ export default class UserIcon extends React.Component {
   render() {
     return (
       <div className="user-icon">
-        <div onClick={this.props.logout}>{this.getInit()}</div>
+        <img src={this.props.user.imageUrl} />
       </div>
     );
   }

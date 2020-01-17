@@ -162,6 +162,7 @@ export default class QuestionForm extends React.Component {
     }
     question.author_id = this.props.currentUser.id;
     question.title = this.state.title;
+
     this.props.action(question, this.hideModal);
   }
 

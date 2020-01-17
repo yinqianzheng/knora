@@ -2,26 +2,23 @@ import { connect } from "react-redux";
 import Question from "./question";
 
 import { deleteQuestion, follow, unfollow } from "../../../actions/question";
-import {
-  createAnswer,
-  deleteAnswer
-} from "../../../actions/answer";
+import { createAnswer, deleteAnswer } from "../../../actions/answer";
 import { withRouter } from "react-router-dom";
 const action = { type: "REDIRECT", test: {} };
 
-const getQuestion = id => {
-  alert(
-    `fetch question:${id} and show it's detail \n /component/home/question/question_container`
-  );
-  return action;
-};
+// const getQuestion = id => {
+//   alert(
+//     `fetch question:${id} and show it's detail \n /component/home/question/question_container`
+//   );
+//   return action;
+// };
 
-const getAnswers = id => {
-  alert(
-    `fetch answers for question:${id} \n /component/home/question/question_container`
-  );
-  return action;
-};
+// const getAnswers = id => {
+//   alert(
+//     `fetch answers for question:${id} \n /component/home/question/question_container`
+//   );
+//   return action;
+// };
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,

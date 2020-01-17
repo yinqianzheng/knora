@@ -6,13 +6,9 @@ import { CreateQuestionForm } from "../../home/question/question_form_comtainer"
 export default class UtilsBox extends React.Component {
   constructor(props) {
     super(props);
-    this.showCreateQuestionModal = this.showCreateQuestionModal.bind(this);
-  }
-
-  showCreateQuestionModal() {
-    alert(
-      "Sorry, not yet implemented \n Will show a modal for creating question"
-    );
+    this.state = {
+      showLogout: "hidden"
+    };
   }
 
   render() {
@@ -20,7 +16,12 @@ export default class UtilsBox extends React.Component {
       <div className="head-nav-right">
         <SearchBundle />
         <CreateQuestionForm type="NAV" />
-        <UserIconContainer user={this.props.currentUser} />
+        <div className="nav-icon-container">
+          <UserIconContainer user={this.props.currentUser} />
+          <div className="logout-btn" onClick={this.props.logout}>
+            <a>Log Out</a>
+          </div>
+        </div>
       </div>
     );
   }

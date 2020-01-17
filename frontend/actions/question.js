@@ -83,6 +83,7 @@ export const createNewQuestion = (formQuestion, callback) => dispatch =>
       if (callback) {
         callback();
       }
+      window.location.hash = `/question_details/${question.id}`;
     },
     err => onFailure(err, dispatch)
   );

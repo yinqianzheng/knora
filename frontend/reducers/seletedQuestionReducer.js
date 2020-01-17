@@ -68,15 +68,17 @@ export default (state = {}, action) => {
       );
       return nextState;
     case RECEIVE_ANSWER:
-      let notEdited = true;
-      nextState.answers.forEach(ans => {
-        if (ans.id === action.answer.id) {
-          notEdited = false;
-          ans.body = action.answer.body;
+      if (nextState.answers) {
+        let notEdited = true;
+        nextState.answers.forEach(ans => {
+          if (ans.id === action.answer.id) {
+            notEdited = false;
+            ans.body = action.answer.body;
+          }
+        });
+        if (notEdited) {
+          nextState.answers.unshift(action.answer);
         }
-      });
-      if (notEdited) {
-        nextState.answers.unshift(action.answer);
       }
       return nextState;
     case CLEAR_QUESTIONS:

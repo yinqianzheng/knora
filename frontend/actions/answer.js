@@ -63,6 +63,7 @@ export const createAnswer = (answer, callback) => dispatch => {
     answer => {
       dispatch(receiveAnswer(answer));
       callback();
+      window.location.hash = `/question_details/${answer.questionId}`;
     },
     err => onFailure(err, dispatch)
   );
