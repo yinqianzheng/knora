@@ -9,6 +9,17 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <% if current_user %>
+    <script id="currentUser">
+      window.currentUser = {
+        id: "<%= current_user.id %>",
+        firstname: "<%= current_user.firstname %>",
+        lastname: "<%= current_user.lastname %>",
+        email: "<%= current_user.email %>",
+        imageUrl: "<%= current_user.imageUrl %>"
+      }
+    </script>
+    <% end %>
     <script>
       window.env = "<%= running_env %>"
     </script>

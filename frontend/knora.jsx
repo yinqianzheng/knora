@@ -8,7 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let preloadedState = undefined;
   if (window.localStorage.getItem("preLoadedState")) {
     preloadedState = JSON.parse(window.localStorage.getItem("preLoadedState"));
+    if (window.currentUser) {
+      preloadedState.session.currentUser = window.currentUser;
+      delete window["currentUser"];
+      $("#currentUser").remove();
+    } else {
+      preloadedState.session.currentUser = null;
+    }
   }
+
   const store = createConfigStore(preloadedState);
   window.onbeforeunload = function(event) {
     window.localStorage.setItem(
