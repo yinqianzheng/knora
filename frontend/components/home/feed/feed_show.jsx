@@ -4,9 +4,9 @@ import FeedHeadContainer from "./feed_haed_container";
 
 export default class FeedShow extends React.Component {
   componentDidMount() {
-    if (this.props.questions.length < 1) {
-      this.props.fetchQuestions();
-    }
+    // if (this.props.questions.length < 1) {
+    //   this.props.fetchQuestions();
+    // }
     this.props.fetchWatchList(this.props.currentUser.id);
     this.props.fetchVoteList(this.props.currentUser.id);
   }

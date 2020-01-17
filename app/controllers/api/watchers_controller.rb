@@ -1,6 +1,5 @@
 class Api::WatchersController < ApplicationController
     def create
-        puts "follow question controller"
         watch = Watcher.new(watcher_params)
         if watch.save
             render json: {id: watch.question_id}
@@ -10,7 +9,6 @@ class Api::WatchersController < ApplicationController
     end
 
     def destroy
-        puts "unfollow question controller"
         watch = Watcher.find_by(watcher_params)
         if watch
           watch.destroy

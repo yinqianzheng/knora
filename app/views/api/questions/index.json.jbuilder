@@ -1,6 +1,3 @@
-# need to change
-puts 
-
 json.array! @questions do |question|
     json.id question.id
     json.authorId question.author_id

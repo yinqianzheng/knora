@@ -16,7 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
       JSON.stringify(store.getState())
     );
   };
-
-  window.store = store;
   ReactDOM.render(<Root store={store} />, root);
 });

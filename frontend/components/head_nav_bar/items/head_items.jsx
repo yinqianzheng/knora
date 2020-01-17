@@ -7,7 +7,10 @@ export default class HeadItems extends React.Component {
     return (
       <div className="head-nav">
         <NavLink
-          onClick={this.props.reloadQustions}
+          onClick={() => {
+            this.props.reloadQustions();
+            this.props.selectTopic("");
+          }}
           to="/feed"
           activeStyle={{ outline: "none" }}
           activeClassName="selected"

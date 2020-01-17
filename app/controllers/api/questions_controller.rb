@@ -5,14 +5,14 @@ class Api::QuestionsController < ApplicationController
   end
 
   def create
-    puts "``````````````````sdfs"
-      puts params[:question][:topics]
-      @question = Question.new(question_params)
+    @question = Question.new(question_params)
     if @question.save
-      params[:question][:topics].each do |topic_id|
-        topic_question = TopicQuestion.new({question_id: @question.id, topic_id:topic_id})
-        if !topic_question.save 
-          render json: topic_question.errors.full_messages, status: 401
+      if params[:question][:topics]
+        params[:question][:topics].each do |topic_id|
+          topic_question = TopicQuestion.new({question_id: @question.id, topic_id:topic_id})
+          if !topic_question.save 
+            render json: topic_question.errors.full_messages, status: 401
+          end
         end
       end
       render 'api/questions/show'
