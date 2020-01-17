@@ -1,13 +1,13 @@
 import React from "react";
 import LoginContainer from "./login_container";
 import SignupContentContainer from "./signup_content_container";
-import SessionErrors from "./errors_container";
+// import SessionErrors from "./errors_container";
 
 export default class LoginPage extends React.Component {
   render() {
     return (
       <div className="login-page-container">
-        <SessionErrors />
+        {/* <SessionErrors /> */}
         <div className="login-page-background"></div>
         <div className="login-page-content">
           <div className="main-logo">Knora</div>

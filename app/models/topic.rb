@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-    validates :topic, presence: true
+    validates :topic, presence: true, uniqueness: true
 
     has_many :topic_question_associations,
         class_name: :TopicQuestion,

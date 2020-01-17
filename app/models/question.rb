@@ -1,5 +1,7 @@
 class Question < ApplicationRecord
     validates :title, :author_id, presence: true
+    validates_uniqueness_of :title, :scope => [:author_id]
+
 
     belongs_to :author,
         class_name: :User,

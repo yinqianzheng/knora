@@ -1,0 +1,17 @@
+.session-errors {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: gray;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  z-index: 1900;
+  padding: 20px 0 20px 0;
+}
+
+.session-errors > p {
+  line-height: 30px;
+}
