@@ -22,6 +22,18 @@
   line-height: normal;
 }
 
+.user-icon > div {
+  background-color: #01887a;
+  height: 40px;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.user-icon > div > div {
+  transform: translateY(7px);
+}
+
 img {
   width: 100%;
 }

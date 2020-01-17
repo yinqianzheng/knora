@@ -15,7 +15,13 @@ export default class UserIcon extends React.Component {
   render() {
     return (
       <div className="user-icon">
-        <img src={this.props.user.imageUrl} />
+        {this.props.user.imageUrl ? (
+          <img src={this.props.user.imageUrl} />
+        ) : (
+          <div>
+            <div> {this.getInit()}</div>
+          </div>
+        )}
       </div>
     );
   }

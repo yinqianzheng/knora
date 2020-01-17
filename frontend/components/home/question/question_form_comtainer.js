@@ -5,7 +5,8 @@ import { withRouter } from "react-router-dom";
 
 const mspCreate = state => ({
   currentUser: state.session.currentUser,
-  formType: "Add Question"
+  formType: "Add Question",
+  topics: state.entities.topics
 });
 
 const mspEdit = state => ({

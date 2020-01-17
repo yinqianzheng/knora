@@ -4,12 +4,14 @@ import NewQestions from "./home/question/new_questions_container";
 import LoginPageContainer from "./session/login_page_container";
 import { AuthRoute, ProtectedRoute } from "../utils/route_utils";
 import QuestionDetails from "./home/question/details_container";
+import SessionErrors from "./session/errors_container";
 
 import React from "react";
 import { Switch, Redirect } from "react-router-dom";
 
 export default () => (
   <div>
+    <SessionErrors />
     <ProtectedRoute path="/" component={NavBarContainer} />
     <Switch>
       <ProtectedRoute exact path="/feed" component={FeedContainer} />

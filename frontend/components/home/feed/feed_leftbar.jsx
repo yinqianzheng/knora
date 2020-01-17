@@ -20,8 +20,11 @@ export default class FeedLeftBar extends React.Component {
       <div className="left-bar">
         <ul>
           <li
-            className={this.state.topic === "FEED" ? "left-bar-li" : ""}
-            onClick={() => this.changeTopic("FEED")}
+            className={this.props.topic === "" ? "left-bar-li" : ""}
+            onClick={() => {
+              this.props.selectTopic("");
+              this.props.reloadQustions();
+            }}
           >
             <div className="red">
               <svg width="12px" height="12px" viewBox="0 0 24 24" version="1.1">
@@ -33,8 +36,13 @@ export default class FeedLeftBar extends React.Component {
             Feed
           </li>
           <li
-            onClick={() => this.changeTopic("CS")}
-            className={this.state.topic === "CS" ? "left-bar-li" : ""}
+            onClick={() => {
+              this.props.selectTopic("Computer Science");
+              this.props.fetchByTopic(1);
+            }}
+            className={
+              this.props.topic === "Computer Science" ? "left-bar-li" : ""
+            }
           >
             <div className="blue">
               <img src="/assets/computer.png" />
@@ -42,8 +50,11 @@ export default class FeedLeftBar extends React.Component {
             Computer Science
           </li>
           <li
-            onClick={() => this.changeTopic("FOOD")}
-            className={this.state.topic === "FOOD" ? "left-bar-li" : ""}
+            onClick={() => {
+              this.props.selectTopic("FOOD");
+              this.props.fetchByTopic(2);
+            }}
+            className={this.props.topic === "FOOD" ? "left-bar-li" : ""}
           >
             <div className="yellow">
               <img src="/assets/food.png" />
@@ -51,13 +62,28 @@ export default class FeedLeftBar extends React.Component {
             Food
           </li>
           <li
-            onClick={() => this.changeTopic("TECH")}
-            className={this.state.topic === "TECH" ? "left-bar-li" : ""}
+            onClick={() => {
+              this.props.selectTopic("TECH");
+              this.props.fetchByTopic(3);
+            }}
+            className={this.props.topic === "TECH" ? "left-bar-li" : ""}
           >
             <div className="purple">
               <img src="/assets/tech.jpg" />
             </div>
             Technology
+          </li>
+          <li
+            onClick={() => {
+              this.props.selectTopic("PET");
+              this.props.fetchByTopic(4);
+            }}
+            className={this.props.topic === "PET" ? "left-bar-li" : ""}
+          >
+            <div className="green">
+              <img src="/assets/animal.png" />
+            </div>
+            pet
           </li>
         </ul>
       </div>

@@ -11,6 +11,10 @@ export default class UtilsBox extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.fetchTopics();
+  }
+
   render() {
     return (
       <div className="head-nav-right">

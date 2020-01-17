@@ -6,7 +6,8 @@ import {
   fetchQuestions,
   fetchQuestion,
   followQuestion,
-  unfollowQuestion
+  unfollowQuestion,
+  fetchTopicQuestions
 } from "../utils/question";
 
 import { receiveWatch, receiveRemoveWatch } from "./user";
@@ -174,6 +175,13 @@ export const follow = id => dispatch => {
 export const unfollow = id => dispatch => {
   unfollowQuestion(id).then(
     watch => dispatch(receiveRemoveWatch(watch.id)),
+    err => onFailure(err, dispatch)
+  );
+};
+
+export const fetchQuestionsByTopic = id => dispatch => {
+  fetchTopicQuestions(id).then(
+    questions => dispatch(receiveReloadQuestions(questions)),
     err => onFailure(err, dispatch)
   );
 };

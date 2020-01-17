@@ -1,6 +1,7 @@
 import React from "react";
 import { EditQuestionForm } from "../question/question_form_comtainer";
 import TextEditor from "../text_editor";
+import { Link } from "react-router-dom";
 
 export default class Question extends React.Component {
   constructor(props) {
@@ -256,7 +257,23 @@ export default class Question extends React.Component {
       (this.props.footer !== undefined || this.props.footer === false)
     )
       return <div className="reason_text">{text} · Recommended for you</div>;
-    return <div className="topic-card">topics placeholder</div>;
+    return (
+      <div className="topic-card">
+        {this.props.question.topics
+          ? this.props.question.topics.map(topic => (
+              <Link
+                to="/feed"
+                onclick={() => {
+                  this.props.getQuestionsByTopic(topic.id);
+                  this.props.selectTopic(topic.topic);
+                }}
+              >
+                {topic.topic}
+              </Link>
+            ))
+          : "no related topic"}
+      </div>
+    );
   }
 
   render() {

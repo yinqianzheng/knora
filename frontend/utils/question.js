@@ -11,6 +11,12 @@ export const fetchQuestions = () =>
     method: "GET"
   });
 
+export const fetchTopicQuestions = id =>
+  $.ajax({
+    url: `/api/topic/${id}`,
+    method: "GET"
+  });
+
 export const fetchQuestion = id =>
   $.ajax({
     url: `/api/questions/${id}`,

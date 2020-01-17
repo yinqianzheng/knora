@@ -7,6 +7,7 @@ json.array! @questions do |question|
     json.title question.title
     json.numOfAnswers question.answers.count
     json.numOfFollowers question.watchers.count
+    json.topics []
     answers = question.most_voted_answer()
     if answers
         json.answers answers do |ans|

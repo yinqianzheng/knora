@@ -5,6 +5,8 @@ import watchList from "./watchListReducer";
 import voteList from "./voteListReducer";
 import selectedQuestion from "./seletedQuestionReducer";
 import searchResult from "./searchReducer";
+import topics from "./topicsReducer";
+import selectedTopic from "./selectedTopicRudecer";
 
 export default combineReducers({
   answer: newQuesionReducer,
@@ -12,5 +14,7 @@ export default combineReducers({
   watchList,
   voteList,
   selectedQuestion,
-  searchResult
+  searchResult,
+  topics,
+  selectedTopic
 });

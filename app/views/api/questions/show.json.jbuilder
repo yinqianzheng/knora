@@ -21,3 +21,4 @@ if answers
     end
 end
 json.relatedQuestions @question.related_questions()
+json.topics @question.topics.select(:id, :topic)
