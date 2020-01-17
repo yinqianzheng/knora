@@ -101,7 +101,6 @@ export default class Question extends React.Component {
       this.closeTextEditor
     );
     this.textEditor.current.setState({ text: "" });
-    
   }
 
   handleFollow() {
@@ -263,11 +262,11 @@ export default class Question extends React.Component {
         {this.props.question.topics
           ? this.props.question.topics.map(topic => (
               <Link
-                to="/feed"
-                onclick={() => {
-                  this.props.getQuestionsByTopic(topic.id);
+                onClick={() => {
                   this.props.selectTopic(topic.topic);
+                  this.props.getQuestionsByTopic(topic.id);
                 }}
+                to="/feed"
               >
                 {topic.topic}
               </Link>

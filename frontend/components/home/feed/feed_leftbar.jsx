@@ -51,10 +51,10 @@ export default class FeedLeftBar extends React.Component {
           </li>
           <li
             onClick={() => {
-              this.props.selectTopic("FOOD");
+              this.props.selectTopic("Food");
               this.props.fetchByTopic(2);
             }}
-            className={this.props.topic === "FOOD" ? "left-bar-li" : ""}
+            className={this.props.topic === "Food" ? "left-bar-li" : ""}
           >
             <div className="yellow">
               <img src="/assets/food.png" />
@@ -63,10 +63,10 @@ export default class FeedLeftBar extends React.Component {
           </li>
           <li
             onClick={() => {
-              this.props.selectTopic("TECH");
+              this.props.selectTopic("Technology");
               this.props.fetchByTopic(3);
             }}
-            className={this.props.topic === "TECH" ? "left-bar-li" : ""}
+            className={this.props.topic === "Technology" ? "left-bar-li" : ""}
           >
             <div className="purple">
               <img src="/assets/tech.jpg" />
@@ -75,10 +75,10 @@ export default class FeedLeftBar extends React.Component {
           </li>
           <li
             onClick={() => {
-              this.props.selectTopic("PET");
+              this.props.selectTopic("Pet");
               this.props.fetchByTopic(4);
             }}
-            className={this.props.topic === "PET" ? "left-bar-li" : ""}
+            className={this.props.topic === "Pet" ? "left-bar-li" : ""}
           >
             <div className="green">
               <img src="/assets/animal.png" />
