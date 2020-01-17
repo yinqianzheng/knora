@@ -83,7 +83,7 @@ export default class FeedLeftBar extends React.Component {
             <div className="green">
               <img src="/assets/animal.png" />
             </div>
-            pet
+            Pet
           </li>
         </ul>
       </div>
