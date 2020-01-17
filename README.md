@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+[Knora](https://knora.herokuapp.com) is a clone of Quora. Knora was built with Ruby on Rails backend and React with Redux on the frontend.
 
-Things you may want to cover:
+Live demo: https://knora.herokuapp.com
 
-* Ruby version
 
-* System dependencies
+# Technology Used
 
-* Configuration
+### Backend
+- Rails
+- jBuilder
+- PostgreSQL
 
-* Database creation
+### Frontend
+- React
+- Redux
+- React router
+- Quill
 
-* Database initialization
 
-* How to run the test suite
+# Features
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- user can create a new accout or login with google account
+- User can post and answer questions
+- User can edit/delete one's own questions/answers
