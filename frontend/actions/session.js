@@ -6,6 +6,8 @@ import {
   postDemoSession
 } from "../utils/session";
 
+import { selectTopic } from "./topic";
+
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
@@ -55,6 +57,7 @@ export const demoLogin = () => dispatch =>
 export const logout = () => dispatch =>
   deleteSession().then(() => {
     dispatch(loggoutCurrentUser());
+    dispatch(selectTopic(""));
     window.localStorage.clear();
   });
 

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       preloadedState.session.currentUser = null;
     }
+    window.localStorage.clear();
   }
 
   const store = createConfigStore(preloadedState);
