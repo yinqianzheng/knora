@@ -75,7 +75,7 @@ export default class QuestionForm extends React.Component {
     if (e.currentTarget.checked) {
       this.topics.push(e.currentTarget.value);
     } else {
-      this.topics = this.topics.filter(el !== e.currentTarget.value);
+      this.topics = this.topics.filter(el => el !== e.currentTarget.value);
     }
   }
 

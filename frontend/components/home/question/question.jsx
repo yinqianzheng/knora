@@ -271,7 +271,7 @@ export default class Question extends React.Component {
                 {topic.topic}
               </Link>
             ))
-          : "no related topic"}
+          : ""}
       </div>
     );
   }

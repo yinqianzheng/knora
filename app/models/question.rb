@@ -40,7 +40,8 @@ class Question < ApplicationRecord
     end
 
     def related_questions()
-        results = ActiveRecord::Base.connection.exec_query("select id, title from (select id, title, (" + self.title.split(" ").map{|w| "(case when title like '%#{w}%' then 1 else 0 end)"}.join("+") + ") as count from questions where id != #{self.id} order by count desc) as t where t.count > 0 limit 10")
+        words = self.title.split("'").join(" ").split(" ")
+        results = ActiveRecord::Base.connection.exec_query("select id, title from (select id, title, (" + words.split(" ").map{|w| "(case when title like '%#{w}%' then 1 else 0 end)"}.join("+") + ") as count from questions where id != #{self.id} order by count desc) as t where t.count > 0 limit 10")
         return results
     end
 end
