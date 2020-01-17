@@ -101,6 +101,7 @@ export default class Question extends React.Component {
       this.closeTextEditor
     );
     this.textEditor.current.setState({ text: "" });
+    
   }
 
   handleFollow() {

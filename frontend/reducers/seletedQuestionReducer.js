@@ -63,9 +63,16 @@ export default (state = {}, action) => {
       nextState.title = action.question.title;
       return nextState;
     case RECEIVE_REMOVE_ANSWER:
-      nextState.answers = nextState.answers.filter(
-        ans => ans.id !== action.answerId
-      );
+      if (nextState.answers) {
+        nextState.answers.forEach(element => {
+          if (element.id === action.answerId) {
+            nextState.numOfAnswers--;
+          }
+        });
+        nextState.answers = nextState.answers.filter(
+          ans => ans.id !== action.answerId
+        );
+      }
       return nextState;
     case RECEIVE_ANSWER:
       if (nextState.answers) {
@@ -77,7 +84,8 @@ export default (state = {}, action) => {
           }
         });
         if (notEdited) {
-          nextState.answers.unshift(action.answer);
+          nextState.answers.push(action.answer);
+          nextState.numOfAnswers++;
         }
       }
       return nextState;

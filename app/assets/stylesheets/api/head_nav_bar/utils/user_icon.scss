@@ -22,7 +22,7 @@
   line-height: normal;
 }
 
-.user-icon > div {
+.AnswerHeader > .user-icon > div {
   background-color: #01887a;
   height: 40px;
   font-size: 22px;
@@ -30,8 +30,24 @@
   text-align: center;
 }
 
-.user-icon > div > div {
-  transform: translateY(7px);
+.nav-icon-container > .user-icon > div {
+  background-color: #01887a;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.feed-head-icon > .user-icon > div {
+  background-color: #01887a;
+  font-size: 13px;
+  font-weight: 400;
+  height: 18px;
+  text-align: center;
+}
+
+.feed-head-icon > .user-icon > div > div,
+.AnswerHeader > .user-icon > div > div {
+  transform: translateY(8px);
 }
 
 img {

@@ -7,4 +7,4 @@ end
 json.body @answer.body
 json.updatedAt Time.at(@answer.updated_at).strftime("%b %e, %Y")
 json.views @answer.views
-json.upvote @answer.upvotes.count
+json.upvotes @answer.upvotes.count

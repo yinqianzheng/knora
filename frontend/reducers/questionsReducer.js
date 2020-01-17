@@ -8,7 +8,8 @@ import {
 import {
   RECEIVE_UPVOTE,
   RECEIVE_DOWNVOTE,
-  RECEIVE_REMOVE_VOTE
+  RECEIVE_REMOVE_VOTE,
+  RECEIVE_REMOVE_ANSWER
 } from "../actions/answer";
 import { shuffle } from "./newQuestionsReducer";
 import { RECEIVE_WATCH, RECEIVE_REMOVE_WATCH } from "../actions/user";
@@ -35,6 +36,20 @@ export default (state = [], action) => {
       return state.map(question => {
         if (question.id === action.id) {
           question.numOfFollowers--;
+        }
+        return question;
+      });
+    case RECEIVE_REMOVE_ANSWER:
+      return state.map(question => {
+        if (question.answers.length > 0) {
+          question.answers.forEach(element => {
+            if (element.id === action.answerId) {
+              question.numOfAnswers--;
+            }
+          });
+          question.answers = question.answers.filter(
+            ans => ans.id !== action.answerId
+          );
         }
         return question;
       });
