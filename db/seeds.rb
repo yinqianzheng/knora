@@ -15,3 +15,5 @@ Topic.create!(topic1)
 Topic.create!(topic2)
 Topic.create!(topic3)
 Topic.create!(topic4)
+
+User.create!({firstname: "Demo", lastname: "User", email: "demo@gmail.com", password: "1111111"})

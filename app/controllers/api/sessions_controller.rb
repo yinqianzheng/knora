@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def handle_demo_login
-      @user = User.find_by(email:"yinqianzheng@gmail.com");
+      @user = User.find_by(email:"demo@gmail.com");
       login!(@user)
       render 'api/users/show'
     end
