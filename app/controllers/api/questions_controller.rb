@@ -1,6 +1,6 @@
 class Api::QuestionsController < ApplicationController
   def index
-    @questions = Question.all.order("id DESC").limit(10)
+    @questions = Question.order('RANDOM()').limit(12)
     render 'api/questions/index'
   end
 
