@@ -108,6 +108,11 @@
   padding: 0;
 }
 
+.question-dropdown-content > div > div > button {
+  width: 100%;
+  text-align: left;
+}
+
 .question-dropdown-content button:hover {
   text-decoration: underline;
 }
@@ -130,7 +135,8 @@ svg {
   background-color: transparent;
 }
 
-.question-dropdown-content a {
+.question-dropdown-content a,
+.question-dropdown-content > div > div > button {
   color: #2b6dad;
   padding: 12px 16px;
   text-decoration: none;
@@ -138,7 +144,8 @@ svg {
   border-bottom: 1px solid #e2e2e2;
 }
 
-.question-footer-more a:hover {
+.question-footer-more a:hover,
+.question-dropdown-content > div > div > button:hover {
   background-color: #ddd;
 }
 

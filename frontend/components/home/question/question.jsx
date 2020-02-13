@@ -211,9 +211,9 @@ export default class Question extends React.Component {
     if (this.props.currentUser.id === this.props.question.authorId) {
       return (
         <div className={`question-dropdown-content hidden`}>
-          <a>
+          <div>
             <EditQuestionForm type="EDIT" question={this.props.question} />
-          </a>
+          </div>
           <a className="delete" onClick={this.deleteQuestion}>
             DELETE
           </a>
