@@ -19,6 +19,19 @@ Live demo: https://knora.herokuapp.com
 - React router
 - Quill
 
+# Features
+
+- user can create a new accout or login with google account
+- User can post and answer questions
+- User can edit/delete one's own questions/answers
+- User can specify topics when posting question
+- User can search questions and search results are listed in most relevant order.
+- User can follow a question
+- User can vote to a answer
+- User can browse question by topic
+- Show related questions when viewing a question
+- Automatically load more questions when hitting bottom
+
 # Libraries
 
 ### react-quill
@@ -78,17 +91,3 @@ server
     end
   end
 ```
-
-# Features
-
-- user can create a new accout or login with google account
-- User can post and answer questions
-- User can edit/delete one's own questions/answers
-- User can specify topics when posting question
-- User can search questions and search results are listed in most relevant order.
-- User can follow a question
-- User can vote to a answer
-- User can browse question by topic
-- Show related questions when viewing a question
-- Automatically load more questions when hitting bottom
-
