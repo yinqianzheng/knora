@@ -22,8 +22,10 @@ export default class UtilsBox extends React.Component {
         <CreateQuestionForm type="NAV" />
         <div className="nav-icon-container">
           <UserIconContainer user={this.props.currentUser} />
-          <div className="logout-btn" onClick={this.props.logout}>
-            <a>Log Out</a>
+          <div className="dropdown">
+            <div className="logout-btn" onClick={this.props.logout}>
+              <a>Log Out</a>
+            </div>
           </div>
         </div>
       </div>

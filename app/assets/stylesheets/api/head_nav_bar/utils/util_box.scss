@@ -50,7 +50,6 @@ input[type="search"] {
 
 .logout-btn {
   position: absolute;
-  left: -35px;
   width: 200px;
   border: 1px solid #ccc;
   background-color: white;
@@ -59,12 +58,20 @@ input[type="search"] {
     background-color ease-in-out 100ms, border-color ease-in-out 100ms;
   border-radius: 3px;
   box-shadow: 0 1px 1px 0 rgba(200, 200, 200, 0.2);
-  display: none;
+  margin-top: 15px;
 }
 .logout-btn > a {
   margin: 20px;
   cursor: pointer;
 }
-.nav-icon-container:hover .logout-btn {
+.nav-icon-container:hover .dropdown {
   display: block;
+}
+
+.dropdown {
+  position: absolute;
+  left: -35px;
+  width: 200px;
+  height: 50px;
+  display: none;
 }
