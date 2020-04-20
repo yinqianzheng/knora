@@ -26,11 +26,59 @@ Live demo: https://knora.herokuapp.com
 - User can edit/delete one's own questions/answers
 - User can specify topics when posting question
 - User can search questions and search results are listed in most relevant order.
+  
+  Knora supports real-time searching for questions. As user entering their search keywords, Knora will query the database for   the most word-matching titles. To avoid unnecessary queries and reduce server workload, I implemented a throttling function     to enforces a maximum number of search requests can be made over a predetermined amount of time.
+```javascript
+  function throttle(func, limit){
+    let timeoutId;
+    let startTime;
+    return function() {
+      const args = arguments;
+      if (!startTime) {
+        func.apply(this, args);
+        startTime = Date.now();
+      } else {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(function() {
+          func.apply(this, args)
+          startTime = Date.now()
+        }, limit - (Date.now() - startTime))
+      }
+    }
+  }
+```
+  
 - User can follow a question
 - User can vote to a answer
-- User can browse question by topic
 - Show related questions when viewing a question
+
+  To determine the most related questions, I query the database with a case statement to count the number of matching words     between each question and search keywords or current question. Then I ordered them by counts and select the first 10.
+
+```ruby
+  class Question < ApplicationRecord
+    # ...
+    def related_questions()
+        words = self.title.split("'").join(" ").downcase
+        caseQuery = words.split(" ").map{|w| "(case when LOWER(title) like '%#{w}%' then 1 else 0 end)"}.join("+")
+        results = ActiveRecord::Base.connection.exec_query(
+          "select id, title 
+           from (select id, title, (" + caseQuery + ") as count 
+           from questions 
+           where id != #{self.id} 
+           order by count desc) as t where t.count > 0 limit 10"
+        )
+        return results
+    end
+  end
+```
 - Automatically load more questions when hitting bottom
+  
+  In order to keep visitors to stay on Knora longer, I added the infinite scroll to automatically load more question when user arrives the bottom of the page. This is done by calculating the user's view position of the page, and fetching for more questions when the view position is at the bottom of the page.
+```javascript
+  if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+    // do something
+  }
+```
 
 # Libraries
 
