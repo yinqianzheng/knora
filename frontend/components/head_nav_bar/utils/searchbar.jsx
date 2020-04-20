@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { throttle } from "../../../utils/search";
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -8,23 +9,25 @@ export default class SearchBar extends React.Component {
     this.state = {
       keyword: "",
       searchLayer: "hidden",
-      resultStyle: ""
+      resultStyle: "",
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.renderResultBox = this.renderResultBox.bind(this);
+    this.search = throttle(this.props.search, 1000).bind(this);
   }
 
   updateSearch(e) {
     if (e.currentTarget.value !== "") {
       this.setState({
         keyword: e.currentTarget.value,
-        resultStyle: "search-result-show"
+        resultStyle: "search-result-show",
       });
-      this.props.search(e.currentTarget.value);
+
+      this.search(e.currentTarget.value);
     } else {
       this.setState({
         keyword: e.currentTarget.value,
-        resultStyle: ""
+        resultStyle: "",
       });
       this.props.clearSearch();
     }
@@ -35,7 +38,7 @@ export default class SearchBar extends React.Component {
       return (
         <div className="search-result">
           <ul className="result-list">
-            {this.props.results.map(res => (
+            {this.props.results.map((res) => (
               <li>
                 <Link
                   onClick={() => {
@@ -61,13 +64,13 @@ export default class SearchBar extends React.Component {
       <div className="search-bar">
         <img src="/assets/search_icon.png" className="search-icon"></img>
         <input
-          onFocus={e => {
+          onFocus={(e) => {
             this.setState({
-              searchLayer: ""
+              searchLayer: "",
             });
             this.updateSearch(e);
           }}
-          onChange={e => this.updateSearch(e)}
+          onChange={(e) => this.updateSearch(e)}
           type="search"
           placeholder="Search Knora"
           value={this.state.keyword}
@@ -76,7 +79,7 @@ export default class SearchBar extends React.Component {
         {this.renderResultBox()}
 
         <div
-          onClick={e => {
+          onClick={(e) => {
             this.setState({ searchLayer: "hidden" });
             this.props.clearSearch();
           }}
